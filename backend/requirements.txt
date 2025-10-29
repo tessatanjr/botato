@@ -1,2 +1,14 @@
 fastapi
 uvicorn[standard]
+python-multipart
+pdfplumber
+pytesseract
+pillow
+pdf2image
+beautifulsoup4
+spacy
+openai
+faiss-cpu
+sentence-transformers
+python-dotenv
+pytest
