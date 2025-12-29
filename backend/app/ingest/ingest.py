@@ -26,13 +26,16 @@ logger = logging.getLogger(__name__)
 
 # NLP model setup
 try:
-    nlp = spacy.load("en_core_web_sm")
-    logger.info("spaCy model 'en_core_web_sm' loaded successfully.")
+    # below version faster ingest by 5-10 times, since POS/NER tagging, lemmatization and dependency parsing not needed
+    # nlp = spacy.load("en_core_web_sm")
+
+    # only does tokenisation + sentence segmentation
+    nlp = spacy.blank("en")
+    nlp.add_pipe("sentencizer")
+    logger.info("spaCy model 'en' loaded successfully.")
 except OSError:
-    logger.warning("spaCy model not found. Downloading...")
-    import os
-    os.system("python -m spacy download en_core_web_sm")
-    nlp = spacy.load("en_core_web_sm")
+    logger.warning(f"Failed to load spaCy model: {e}")
+    logger.info("Please make sure spaCy is installed and models are available.")
 
 def pdf_to_text(path):
     logger.info(f"Starting text extraction from PDF: {path}")   
@@ -52,9 +55,9 @@ def pdf_to_text(path):
     logger.info(f"Extracted text from {page_count} pages ({len(text)} characters total).")
     return text
 
-def chunk_text(text, target_words=400, overlap_pct=0.25):
+def chunk_text(text, target_words=400, overlap_percentage=0.25):
 
-    logger.info(f"Starting text chunking: target={target_words} words, overlap={overlap_pct*100:.0f}%")
+    logger.info(f"Starting text chunking: target={target_words} words, overlap={overlap_percentage*100:.0f}%")
 
     doc = nlp(text)
     sentences = [sent.text.strip() for sent in doc.sents if sent.text.strip()]
@@ -63,13 +66,14 @@ def chunk_text(text, target_words=400, overlap_pct=0.25):
     chunks = []
     cur = []
     cur_words = 0
-    overlap = int(target_words * overlap_pct)
+    overlap = int(target_words * overlap_percentage)
 
     for s in sentences:
         s_words = len(s.split())
         if cur_words + s_words >= target_words:
+            # add the cur to chunks[]
             chunks.append(" ".join(cur))
-            # naive overlap: last sentences
+            # overlap_words will hold sentences to carry over into the next chunk.
             overlap_words = []
             while sum(len(w.split()) for w in overlap_words) < overlap and cur:
                 overlap_words.insert(0, cur.pop())
@@ -84,6 +88,69 @@ def chunk_text(text, target_words=400, overlap_pct=0.25):
     logger.info(f"Chunking complete: created {len(chunks)} chunks.")
     return chunks
 
+def recursive_chunk_text(
+    text,
+    chunk_size=800,
+    chunk_overlap=150,
+    separators=["\n\n", "\n", ".", " "],
+):
+    """
+    Recursive character-based text splitter.
+    Similar to LangChain's RecursiveCharacterTextSplitter.
+    """
+
+    def split_text(text, separators):
+        if len(text) <= chunk_size:
+            return [text]
+
+        if not separators:
+            return [text[:chunk_size], text[chunk_size:]]
+
+        sep = separators[0]
+        pieces = text.split(sep)
+
+        chunks = []
+        current = ""
+
+        for piece in pieces:
+            piece = piece.strip()
+            if not piece:
+                continue
+
+            if len(current) + len(piece) + len(sep) <= chunk_size:
+                current += piece + sep
+            else:
+                if current:
+                    chunks.append(current.strip())
+                current = piece + sep
+
+        if current:
+            chunks.append(current.strip())
+
+        # If chunks are still too large, recurse with next separator
+        final_chunks = []
+        for c in chunks:
+            if len(c) > chunk_size:
+                final_chunks.extend(split_text(c, separators[1:]))
+            else:
+                final_chunks.append(c)
+
+        return final_chunks
+
+    raw_chunks = split_text(text, separators)
+
+    # Add overlap
+    final_chunks = []
+    for i, chunk in enumerate(raw_chunks):
+        if i == 0:
+            final_chunks.append(chunk)
+        else:
+            overlap_text = raw_chunks[i - 1][-chunk_overlap:]
+            final_chunks.append(overlap_text + chunk)
+
+    return final_chunks
+
+
 if __name__ == "__main__":
     from pathlib import Path
 
@@ -92,7 +159,12 @@ if __name__ == "__main__":
     logger.info("Extracted text (first 500 chars):")
     logger.info(text[:500])
 
-    chunks = chunk_text(text)
+    # chunks = chunk_text(text)
+    chunks = recursive_chunk_text(
+    text,
+    chunk_size=800,
+    chunk_overlap=150
+    )
     logger.info(f"\nNumber of chunks: {len(chunks)}")
     logger.info("First chunk preview:")
     logger.info(chunks[0][:500])
