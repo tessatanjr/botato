@@ -12,4 +12,5 @@ python-dotenv
 python-multipart
 sentence-transformers
 spacy
+sqlalchemy==2.0.25
 uvicorn[standard]

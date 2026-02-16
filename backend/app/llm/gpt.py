@@ -19,6 +19,6 @@ class GPTModel:
             model=self.model,
             messages=[{"role": "user", "content": prompt}]
         )
-        answer = response.choices[0].message["content"]
+        answer = response.choices[0].message.content
         logger.info("RAG query completed, answer length: %d", len(answer))
         return answer
