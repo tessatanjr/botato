@@ -4,8 +4,8 @@ from ollama import Client
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-class LlamaModel:
-    def __init__(self, model="llama3:latest"):
+class Llama213BModel:
+    def __init__(self, model="llama2:13b-chat-q4"):
         self.client = Client()
         self.model = model
 

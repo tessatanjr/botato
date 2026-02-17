@@ -10,7 +10,8 @@ from app.indexing.minilm_indexer import MiniLMIndexer
 # from backend.app.indexing.indexer import add_chunks_to_index, save_index
 from app.retrieval.retrieval import RetrievalEngine
 from app.llm.gpt import GPTModel
-from app.llm.LLaMa import LlamaModel
+from backend.app.llm.llama27b import Llama27BModel
+from backend.app.llm.llama213b import Llama213BModel
 import shutil, os
 
 app = FastAPI()
@@ -78,8 +79,10 @@ def chat(req: ChatRequest):
 
     if req.llm_model.lower().startswith("gpt"):
         llm = GPTModel(model="gpt-4")
-    elif req.llm_model.lower().startswith("llama"):
-        llm = LlamaModel(model="llama3:latest")
+    elif req.llm_model.lower().startswith("llama27b"):
+        llm = Llama27BModel(model="llama2:7b-chat-q4")
+    elif req.llm_model.lower().startswith("llama213b"):
+        llm = Llama213BModel(model="llama2:13b-chat-q4")
     else:
         db.close()
         raise HTTPException(status_code=400, detail=f"Unsupported LLM model: {req.llm_model}")

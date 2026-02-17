@@ -15,7 +15,7 @@ def main():
                         choices=['minilm', 'openai'],
                         help='Embedding provider (minilm or openai)')
     parser.add_argument('--model', type=str, default='gpt-4',
-                        help='LLM model to use (e.g., gpt-4, gpt-3.5-turbo)')
+                        help='LLM model to use (e.g., gpt-4, llama27b, llama213b')
     parser.add_argument('--top-k', type=int, default=5,
                         help='Number of chunks to retrieve')
     parser.add_argument('--output', type=str, default=None,
