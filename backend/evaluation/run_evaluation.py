@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Simple RAG Evaluation Runner
-Usage: python run_evaluation.py --provider minilm --model llama --top-k 5
+Usage: python run_evaluation.py --provider minilm --model llama --top-k 6
 """
 
 import argparse
