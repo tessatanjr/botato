@@ -36,6 +36,6 @@ END
 download_model "meta-llama/Llama-2-7b-chat-hf" "models/llama2/7B"
 
 # LLaMA 2 13B Chat HF
-download_model "meta-llama/Llama-2-13b-chat-hf" "models/llama2/13B"
+# download_model "meta-llama/Llama-2-13b-chat-hf" "models/llama2/13B"
 
 echo "Download complete for both 7B and 13B!"
