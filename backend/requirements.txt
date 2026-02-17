@@ -1,7 +1,6 @@
 beautifulsoup4
 faiss-cpu
 fastapi
-huggingface_hub
 ollama
 openai
 pdfplumber
