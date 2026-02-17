@@ -50,16 +50,19 @@ class RAGEvaluator:
         Recall@K = (number of relevant chunks retrieved) / (total number of relevant chunks)
         """
         if not golden_chunks:
-            return 0.0
+            return 1.0
         
         # Normalize chunk IDs
         retrieved_normalized = set(self.normalize_chunk_id(c) for c in retrieved_chunks)
         golden_normalized = set(self.normalize_chunk_id(c) for c in golden_chunks)
         
-        relevant_retrieved = len(retrieved_normalized.intersection(golden_normalized))
-        total_relevant = len(golden_normalized)
+        # relevant_retrieved = len(retrieved_normalized.intersection(golden_normalized))
+        # total_relevant = len(golden_normalized)
         
-        return relevant_retrieved / total_relevant if total_relevant > 0 else 0.0
+        # return relevant_retrieved / total_relevant if total_relevant > 0 else 0.0
+        hit = retrieved_normalized.intersection(golden_normalized)
+
+        return 1.0 if hit else 0.0
     
     def calculate_mrr(self, retrieved_chunks: List[str], golden_chunks: List[str]) -> float:
         """
@@ -67,7 +70,7 @@ class RAGEvaluator:
         MRR = 1 / rank of first relevant chunk
         """
         if not golden_chunks:
-            return 0.0
+            return 1.0
         
         # Normalize chunk IDs
         golden_normalized = set(self.normalize_chunk_id(c) for c in golden_chunks)
@@ -113,6 +116,26 @@ class RAGEvaluator:
         
         return precision, recall, f1
     
+    def calculate_token_recall(self, predicted_answer: str, golden_answer: str) -> float:
+        """
+        Measures how much of the golden answer is covered by the model output.
+        Equivalent to token-level recall.
+        """
+
+        pred_tokens = self.tokenize(predicted_answer)
+        gold_tokens = self.tokenize(golden_answer)
+
+        if not gold_tokens:
+            return 1.0  # nothing required → perfect recall
+
+        pred_counter = Counter(pred_tokens)
+        gold_counter = Counter(gold_tokens)
+
+        common = pred_counter & gold_counter
+        num_same = sum(common.values())
+
+        return num_same / len(gold_tokens)
+    
     def run_evaluation(
         self,
         questions_file: str,
@@ -141,6 +164,8 @@ class RAGEvaluator:
         f1_scores = []
         precision_scores = []
         recall_f1_scores = []
+        token_recall_scores = []
+
         
         # Process each question
         for idx, item in enumerate(questions_data, 1):
@@ -174,7 +199,12 @@ class RAGEvaluator:
                     response['answer'],
                     item['golden_answer']
                 )
-                
+
+                token_recall = self.calculate_token_recall(
+                    response['answer'],
+                    item['golden_answer']
+                )
+
                 # Store results
                 result = {
                     'question_id': item['id'],
@@ -189,7 +219,8 @@ class RAGEvaluator:
                         'mrr': mrr,
                         'f1_score': f1,
                         'precision': precision,
-                        'recall': recall_f1
+                        'recall': recall_f1,
+                        'token_recall':token_recall
                     }
                 }
                 
@@ -199,6 +230,7 @@ class RAGEvaluator:
                 f1_scores.append(f1)
                 precision_scores.append(precision)
                 recall_f1_scores.append(recall_f1)
+                token_recall_scores.append(token_recall)
                 
                 # Rate limiting
                 time.sleep(0.5)
@@ -217,6 +249,7 @@ class RAGEvaluator:
             'average_f1_score': sum(f1_scores) / len(f1_scores) if f1_scores else 0,
             'average_precision': sum(precision_scores) / len(precision_scores) if precision_scores else 0,
             'average_recall': sum(recall_f1_scores) / len(recall_f1_scores) if recall_f1_scores else 0,
+            'average_token_recall': sum(token_recall_scores) / len(token_recall_scores) if token_recall_scores else 0,
         }
         
         # Prepare final output
@@ -250,8 +283,9 @@ class RAGEvaluator:
         print(f"  Average MRR: {aggregate_metrics['average_mrr']:.4f}")
         print(f"\nAnswer Quality Metrics:")
         print(f"  Average F1 Score: {aggregate_metrics['average_f1_score']:.4f}")
+        print(f"  Average Answer Recall: {aggregate_metrics['average_answer_recall']:.4f}")
         print(f"  Average Precision: {aggregate_metrics['average_precision']:.4f}")
-        print(f"  Average Recall: {aggregate_metrics['average_recall']:.4f}")
+        print(f"  Average Token Recall: {aggregate_metrics['average_token_recall']:.4f}")
         print(f"\nResults saved to: {output_file}")
         print(f"{'='*60}\n")
         
