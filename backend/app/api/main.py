@@ -10,7 +10,7 @@ from app.indexing.minilm_indexer import MiniLMIndexer
 # from backend.app.indexing.indexer import add_chunks_to_index, save_index
 from app.retrieval.retrieval import RetrievalEngine
 from app.llm.gpt import GPTModel
-from backend.app.llm.llama3 import Llama3Model
+from app.llm.llama3 import Llama3Model
 import shutil, os
 
 app = FastAPI()
