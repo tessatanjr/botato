@@ -202,8 +202,8 @@ async def upload_pdf(file: UploadFile = File(...), embedding_provider: str = For
             "chunks_added": len(chunks),
             "embedding_provider": embedding_provider}
 
-@app.get("/api/inspect/db")
-def inspect_db(limit_chunks: int = 3, db: Session = Depends(get_db)):
+@app.get("/api/inspect/documents") 
+def inspect_documents(limit_chunks: int = 3, db: Session = Depends(get_db)):
     # check all documents present in db and how many chunks to show (limit_chunks)
     documents = db.query(Document).all()
     results = []
@@ -237,6 +237,36 @@ def inspect_db(limit_chunks: int = 3, db: Session = Depends(get_db)):
         "documents": results
     }
 
+@app.get("/api/inspect/chat")
+def inspect_chat(db: Session = Depends(get_db)):
+    sessions = db.query(ChatSession).all()
+    results = []
+
+    for session in sessions:
+        messages = (
+            db.query(ChatMessage)
+            .filter(ChatMessage.session_id == session.id)
+            .order_by(ChatMessage.created_at)
+            .all()
+        )
+
+        results.append({
+            "session_id": session.id,
+            "message_count": len(messages),
+            "messages": [
+                {
+                    "role": m.role,
+                    "content": m.content,
+                    "created_at": m.created_at
+                }
+                for m in messages
+            ]
+        })
+
+    return {
+        "total_sessions": len(results),
+        "sessions": results
+    }
 
 @app.post("/api/reset")
 def reset_index(embedding_provider: str = "openai", db: Session = Depends(get_db)):
