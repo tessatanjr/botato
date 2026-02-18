@@ -995,38 +995,31 @@
         "id": "SPM-41",
         "question": "How does Stripe handle currency conversion fees?",
         "golden_answer": "I don't know",
-        "openai_relevant_chunk": [
-        ],
-        "minilm_relevant_chunk": [
-        ],
+        "openai_relevant_chunk": [],
+        "minilm_relevant_chunk": [],
         "source_document": "stripe_payment_methods_33p.pdf"
     },
     {
         "id": "SPM-42",
         "question": "Are there automatic retries when a customers card is declined?",
         "golden_answer": "I don't know",
-        "openai_relevant_chunk": [
-        ],
-        "minilm_relevant_chunk": [
-        ],
+        "openai_relevant_chunk": [],
+        "minilm_relevant_chunk": [],
         "source_document": "stripe_payment_methods_33p.pdf"
     },
     {
         "id": "SPM-43",
         "question": "Does Stripe support GrabPay for customers in Singapore, Thailand, or the Philippines?",
         "golden_answer": "I don't know",
-        "openai_relevant_chunk": [
-        ],
-        "minilm_relevant_chunk": [
-        ],
+        "openai_relevant_chunk": [],
+        "minilm_relevant_chunk": [],
         "source_document": "stripe_payment_methods_33p.pdf"
     },
     {
         "id": "SPM-44",
         "question": "What is the maximum transaction amount Stripe allows?",
         "golden_answer": "I don't know",
-        "openai_relevant_chunk": [
-        ],
+        "openai_relevant_chunk": [],
         "minilm_relevant_chunk": []
         ,
         "source_document": "stripe_payment_methods_33p.pdf"

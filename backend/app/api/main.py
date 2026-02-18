@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, Form, HTTPException
+from fastapi import Depends, FastAPI, UploadFile, File, Form, HTTPException
 from db.session import SessionLocal
 from sqlalchemy.orm import Session
 from db.model import ChatMessage, ChatSession, Document, DocumentChunk
@@ -33,15 +33,19 @@ def get_indexer(provider: str):
     else:
         raise HTTPException(status_code=400, detail=f"Unsupported embedding provider: {provider}")
 
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
 @app.get("/")
 def read_root():
     return {"message": "Hello BOTATO!"}
 
 @app.post("/api/chat")
-def chat(req: ChatRequest):
-
-    db= SessionLocal()
-
+def chat(req: ChatRequest, db: Session = Depends(get_db)):
     user_message = ChatMessage(
         session_id=req.session_id,
         role="user",
@@ -81,7 +85,6 @@ def chat(req: ChatRequest):
     elif req.llm_model.lower().startswith("llama3"):
         llm = Llama3Model(model="llama3:latest")
     else:
-        db.close()
         raise HTTPException(status_code=400, detail=f"Unsupported LLM model: {req.llm_model}")
 
     prompt = f"""
@@ -114,30 +117,27 @@ def chat(req: ChatRequest):
     )
     db.add(assistant_msg)
     db.commit()
-    db.close()
 
     return {"question": req.question, "answer": answer, "retrieved_chunks": retrieved_chunk_info}
 
 # creates chat session entry in db
 @app.post("/api/chat/start")
-def start_chat():
-    db = SessionLocal()
+def start_chat(db: Session = Depends(get_db)):
     session = ChatSession()
     db.add(session)
     db.commit()
     db.refresh(session)
-    db.close()
 
     return {"session_id": session.id}
 
 @app.post("/api/retrieve")
 def retrieve_only(req: ChatRequest):
     retriever = RetrievalEngine(provider=req.embedding_provider)
-    results = retriever.retrieve_chunks(req.question, top_k=req.top_k)
+    results = retriever.retrieve_chunks(req.question, k=req.top_k)
     return {"query": req.question, "results": results}
 
 @app.post("/api/upload")
-async def upload_pdf(file: UploadFile = File(...), embedding_provider: str = Form("openai")):
+async def upload_pdf(file: UploadFile = File(...), embedding_provider: str = Form("openai"), db: Session = Depends(get_db)):
     if not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are allowed")
 
@@ -176,9 +176,6 @@ async def upload_pdf(file: UploadFile = File(...), embedding_provider: str = For
         f"{file.filename}_{embedding_provider}"
     )
 
-    # save to db
-    db = SessionLocal()
-
     doc = Document(
         filename=file.filename,
         embedding_provider=embedding_provider,
@@ -198,7 +195,6 @@ async def upload_pdf(file: UploadFile = File(...), embedding_provider: str = For
         db.add(db_chunk)
 
     db.commit()
-    db.close()
 
     print(f"Total chunks: {len(chunks)}\n")
 
@@ -207,49 +203,43 @@ async def upload_pdf(file: UploadFile = File(...), embedding_provider: str = For
             "embedding_provider": embedding_provider}
 
 @app.get("/api/inspect/db")
-def inspect_db(limit_chunks: int = 3):
+def inspect_db(limit_chunks: int = 3, db: Session = Depends(get_db)):
     # check all documents present in db and how many chunks to show (limit_chunks)
+    documents = db.query(Document).all()
+    results = []
 
-    db: Session = SessionLocal()
+    for doc in documents:
+        chunks = (
+            db.query(DocumentChunk)
+            .filter(DocumentChunk.document_id == doc.id)
+            .order_by(DocumentChunk.chunk_index)
+            .limit(limit_chunks)
+            .all()
+        )
 
-    try:
-        documents = db.query(Document).all()
-        results = []
+        results.append({
+            "document_id": doc.id,
+            "filename": doc.filename,
+            "embedding_provider": doc.embedding_provider,
+            "chunk_strategy": doc.chunk_strategy,
+            "num_chunks": doc.num_chunks,
+            "sample_chunks": [
+                {
+                    "chunk_index": c.chunk_index,
+                    "preview": c.text[:200] 
+                }
+                for c in chunks
+            ]
+        })
 
-        for doc in documents:
-            chunks = (
-                db.query(DocumentChunk)
-                .filter(DocumentChunk.document_id == doc.id)
-                .order_by(DocumentChunk.chunk_index)
-                .limit(limit_chunks)
-                .all()
-            )
+    return {
+        "total_documents": len(results),
+        "documents": results
+    }
 
-            results.append({
-                "document_id": doc.id,
-                "filename": doc.filename,
-                "embedding_provider": doc.embedding_provider,
-                "chunk_strategy": doc.chunk_strategy,
-                "num_chunks": doc.num_chunks,
-                "sample_chunks": [
-                    {
-                        "chunk_index": c.chunk_index,
-                        "preview": c.text[:200] 
-                    }
-                    for c in chunks
-                ]
-            })
-
-        return {
-            "total_documents": len(results),
-            "documents": results
-        }
-
-    finally:
-        db.close()
 
 @app.post("/api/reset")
-def reset_index(embedding_provider: str = "openai"):
+def reset_index(embedding_provider: str = "openai", db: Session = Depends(get_db)):
     embedding_provider = embedding_provider.lower()
 
     if embedding_provider not in ["openai", "minilm"]:
@@ -264,8 +254,6 @@ def reset_index(embedding_provider: str = "openai"):
     chunk_files = glob.glob(f"{CHUNK_DEBUG_DIR}/*_chunks.txt")
     for f in chunk_files:
         os.remove(f)
-
-    db: Session = SessionLocal()
 
     try:
         docs = (
@@ -291,10 +279,19 @@ def reset_index(embedding_provider: str = "openai"):
         db.rollback()
         raise HTTPException(status_code=500, detail=str(e))
 
-    finally:
-        db.close()
-
     return {
         "message": "Index reset successful",
         "embedding_provider": embedding_provider
     }
+
+@app.post("/api/reset/chat")
+def reset_chat(db: Session = Depends(get_db)):
+    try:
+        db.query(ChatMessage).delete()
+        db.query(ChatSession).delete()
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    
+    return {"message": "Chat history cleared"}
