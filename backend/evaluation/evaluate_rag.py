@@ -283,7 +283,6 @@ class RAGEvaluator:
         print(f"  Average MRR: {aggregate_metrics['average_mrr']:.4f}")
         print(f"\nAnswer Quality Metrics:")
         print(f"  Average F1 Score: {aggregate_metrics['average_f1_score']:.4f}")
-        print(f"  Average Answer Recall: {aggregate_metrics['average_answer_recall']:.4f}")
         print(f"  Average Precision: {aggregate_metrics['average_precision']:.4f}")
         print(f"  Average Token Recall: {aggregate_metrics['average_token_recall']:.4f}")
         print(f"\nResults saved to: {output_file}")
@@ -303,17 +302,17 @@ def main():
     # Configuration 1: MinILM embeddings with GPT-4
     print("Running evaluation with MinILM + GPT-4...")
     evaluator.run_evaluation(
-        questions_file="evaluation_questions.json",
+        questions_file="golden_question_set.json",
         embedding_provider="minilm",
         llm_model="gpt-4",
         top_k=5,
-        output_file="results_minilm_gpt4.json"
+        output_file="golden_question_set.json"
     )
     
     # Configuration 2: OpenAI embeddings with GPT-4
     print("\nRunning evaluation with OpenAI + GPT-4...")
     evaluator.run_evaluation(
-        questions_file="evaluation_questions.json",
+        questions_file="golden_question_set.json",
         embedding_provider="openai",
         llm_model="gpt-4",
         top_k=5,

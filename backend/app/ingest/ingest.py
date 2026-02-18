@@ -19,7 +19,7 @@ import unicodedata
 import logging
 import os
 import pdfplumber
-import fitz
+# import fitz
 import spacy
 
 logging.basicConfig(level=logging.INFO)
