@@ -2,6 +2,7 @@ import { useAppContext, INDEXER_OPTIONS } from '../../context/AppContext'
 
 export default function Header() {
   const { indexer, setIndexer } = useAppContext()
+  const isProduction = import.meta.env.VITE_ENV === 'production'
 
   return (
     <header className="flex items-center justify-between px-6 h-14 border-b border-zinc-800 bg-zinc-950 flex-shrink-0">
@@ -17,8 +18,19 @@ export default function Header() {
           className="bg-zinc-900 border border-zinc-700 text-zinc-300 text-xs font-mono px-3 py-1.5 rounded-full outline-none cursor-pointer hover:border-zinc-500 transition-colors"
         >
           {INDEXER_OPTIONS.map((o) => (
-            <option key={o.value} value={o.value}>
-              {o.label}
+            <option
+              key={o.value}
+              value={o.value}
+              disabled={isProduction && o.localOnly}
+              title={
+                isProduction && o.localOnly
+                  ? 'Llama 3 is only available when running locally'
+                  : ''
+              }
+            >
+              {isProduction && o.localOnly
+                ? `${o.label} (local only)`
+                : o.label}
             </option>
           ))}
         </select>
