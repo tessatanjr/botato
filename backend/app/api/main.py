@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from db.model import ChatMessage, ChatSession, Document, DocumentChunk
 import glob
 from pydantic import BaseModel
-from app.ingest.ingest import pdf_to_text, paragraph_sentence_chunk_text, write_chunks_to_file, CHUNK_DEBUG_DIR
+from app.ingest.ingest import extract_pdf_text, docx_to_text, url_to_text, paragraph_sentence_chunk_text, write_chunks_to_file, CHUNK_DEBUG_DIR
 from app.indexing.openai_indexer import OpenAIIndexer
 from app.indexing.minilm_indexer import MiniLMIndexer
 # from backend.app.indexing.indexer import add_chunks_to_index, save_index
@@ -12,6 +12,7 @@ from app.retrieval.retrieval import RetrievalEngine
 from app.llm.gpt import GPTModel
 from app.llm.llama3 import Llama3Model
 import shutil, os
+import re
 
 app = FastAPI()
 
@@ -140,16 +141,23 @@ def retrieve_only(req: ChatRequest):
     return {"query": req.question, "results": results}
 
 @app.post("/api/upload")
-async def upload_pdf(file: UploadFile = File(...), embedding_provider: str = Form("openai"), db: Session = Depends(get_db)):
-    if not file.filename.lower().endswith(".pdf"):
-        raise HTTPException(status_code=400, detail="Only PDF files are allowed")
+async def upload_pdf(file: UploadFile = File(None), url: str = Form(None), embedding_provider: str = Form("openai"), db: Session = Depends(get_db)):
+    if url:
+        source_name = url
+        text = url_to_text(url)
+    elif file:
+        source_name = file.filename
+        filename_lower = file.filename.lower()
+        if filename_lower.endswith(".pdf"):
+            text = extract_pdf_text(file.file)
+        elif filename_lower.endswith(".docx"):
+            text = docx_to_text(file.file)
+        else:
+            raise HTTPException(status_code=400, detail="Unsupported file type. Supported: PDF, DOCX")
+    else:
+        raise HTTPException(status_code=400, detail="Either a file or a URL must be provided")
 
-    # file_path = os.path.join(UPLOAD_FOLDER, file.filename)
-
-    # Extract 
-    text = pdf_to_text(file.file)
-
-    # chunk
+    # decide chunk size
     if embedding_provider.lower() == "openai":
         chunk_size = 2000
         chunk_overlap = 250
@@ -170,17 +178,19 @@ async def upload_pdf(file: UploadFile = File(...), embedding_provider: str = For
     # Embed and save to FAISS
     indexer = get_indexer(embedding_provider)
     indexer.load_index(embedding_provider)
-    indexer.add_chunks_to_index(chunks, source=file.filename)
+    indexer.add_chunks_to_index(chunks, source=source_name)
     indexer.save_index(embedding_provider)
+
+    safe_name = re.sub(r'[^\w\-_.]', '_', source_name)
 
     # save to local
     write_chunks_to_file(
         chunks,
-        f"{file.filename}_{embedding_provider}"
+        f"{safe_name}_{embedding_provider}"
     )
 
     doc = Document(
-        filename=file.filename,
+        filename=source_name,
         embedding_provider=embedding_provider,
         chunk_strategy="paragraph_sentence",
         num_chunks=len(chunks)
@@ -201,7 +211,7 @@ async def upload_pdf(file: UploadFile = File(...), embedding_provider: str = For
 
     print(f"Total chunks: {len(chunks)}\n")
 
-    return {"message": f"{file.filename} uploaded and processed",
+    return {"message": f"{source_name} uploaded and processed",
             "chunks_added": len(chunks),
             "embedding_provider": embedding_provider}
 

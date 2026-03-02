@@ -4,7 +4,10 @@ import { useFileUpload } from '../../hooks/useFileUpload'
 import { useChat } from '../../hooks/useChat'
 
 export default function UploadZone() {
-  const { files, addFiles, runIndexing, resetDocuments } = useFileUpload()
+  const { files, addFiles, addUrl, runIndexing, resetDocuments } =
+    useFileUpload()
+  const [urlInput, setUrlInput] = useState('')
+
   const { resetChatHistory } = useChat()
   const [dragging, setDragging] = useState(false)
   const [indexing, setIndexing] = useState(false)
@@ -15,6 +18,13 @@ export default function UploadZone() {
     e.preventDefault()
     setDragging(false)
     addFiles([...e.dataTransfer.files])
+  }
+
+  const handleAddUrl = () => {
+    const trimmed = urlInput.trim()
+    if (!trimmed) return
+    addUrl(trimmed)
+    setUrlInput('')
   }
 
   const handleIndex = async () => {
@@ -53,19 +63,11 @@ export default function UploadZone() {
         className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors
                 ${dragging ? 'border-emerald-400 bg-emerald-950/30' : 'border-zinc-700 hover:border-zinc-500'}`}
       >
-        {/* <input
-          ref={inputRef}
-          type="file"
-          multiple
-          accept=".pdf"
-          className="hidden"
-          onChange={(e) => addFiles([...e.target.files])}
-        /> */}
         <input
           ref={inputRef}
           type="file"
           multiple
-          accept=".pdf"
+          accept=".pdf, .docx"
           className="hidden"
           onChange={(e) => {
             addFiles([...e.target.files])
@@ -74,7 +76,27 @@ export default function UploadZone() {
         />
         <p className="text-3xl mb-2">📄</p>
         <p className="text-sm font-semibold text-zinc-300">Drop files here</p>
-        <p className="text-xs text-zinc-500 mt-1">PDF documents only</p>
+        <p className="text-xs text-zinc-500 mt-1">PDF or Word documents</p>
+      </div>
+
+      <div className="flex gap-2">
+        <input
+          type="text"
+          placeholder="Or paste a URL..."
+          value={urlInput}
+          onChange={(e) => setUrlInput(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && handleAddUrl()}
+          className="flex-1 px-3 py-2 rounded-lg bg-zinc-900 border border-zinc-700 
+      text-sm text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-zinc-500"
+        />
+        <button
+          onClick={handleAddUrl}
+          disabled={!urlInput.trim()}
+          className="px-3 py-2 rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-300 
+      text-sm hover:bg-zinc-700 disabled:opacity-30 disabled:cursor-not-allowed"
+        >
+          Add
+        </button>
       </div>
 
       <div className="flex-1 overflow-y-auto">
@@ -82,7 +104,6 @@ export default function UploadZone() {
       </div>
 
       <div className="flex flex-col gap-2">
-        {/* Primary action */}
         <button
           onClick={handleIndex}
           disabled={files.length === 0 || busy}

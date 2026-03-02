@@ -43,7 +43,7 @@ export const INDEXER_OPTIONS = [
 
 // global wrapper for the app in /src/App.jsx
 export function AppProvider({ children }) {
-  const [indexer, setIndexer] = useState('openai')
+  const [indexer, setIndexer] = useState('openai_gpt4')
   const [files, setFiles] = useState([])
   const [messages, setMessages] = useState([])
   const [sessionId, setSessionId] = useState(null)

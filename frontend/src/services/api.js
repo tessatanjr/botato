@@ -2,18 +2,24 @@ import axios from 'axios'
 
 const client = axios.create({ baseURL: '/api' })
 
-// Upload & index a file
-export const ingestFile = (file, embeddingProvider) => {
+export const ingestFile = async (fileOrUrl, embeddingProvider) => {
   const form = new FormData()
-  form.append('file', file)
   form.append('embedding_provider', embeddingProvider)
-  return client.post('/upload', form)
+
+  if (typeof fileOrUrl === 'string') {
+    form.append('url', fileOrUrl)
+  } else {
+    form.append('file', fileOrUrl)
+  }
+
+  const res = await axios.post('/api/upload', form)
+
+  return res.data
 }
 
-// Start a new chat session — returns { session_id }
+// returns sessionid
 export const startChatSession = () => client.post('/chat/start')
 
-// Send a message in an existing session
 export const sendChatMessage = (
   sessionId,
   question,
@@ -29,10 +35,10 @@ export const sendChatMessage = (
     top_k: topK,
   })
 
-// clears chat history only — documents stay indexed
+// clear chat history
 export const resetChat = () => client.post('/reset/chat')
 
-// clears documents + index + chat history
+// clears indexes + chat history
 export const resetAll = async () => {
   await client.post('/reset', null, {
     params: { embedding_provider: 'openai' },

@@ -14,11 +14,16 @@
 #     Breaks text into chunks of ~300–500 words with some overlap.
 #     Why? Because LLMs work better with bite-sized context than huge documents.
 
+from docx import Document as DocxDocument
 import re
+import requests
+from bs4 import BeautifulSoup
 import unicodedata
 import logging
 import os
 import pdfplumber
+from pdf2image import convert_from_bytes
+import pytesseract
 # import fitz
 import spacy
 
@@ -117,6 +122,43 @@ def pdf_to_text(file):
     text = text.strip()
 
     logger.info(f"Extracted text from {page_count} pages ({len(text)} characters total).")
+    return text
+
+def scanned_pdf_to_text(file):
+    logger.info("Using OCR for scanned PDF")
+    file.seek(0)
+    images = convert_from_bytes(file.read())
+    text = ""
+    for i, image in enumerate(images):
+        page_text = pytesseract.image_to_string(image)
+        if page_text.strip():
+            text += page_text + "\n"
+        else:
+            logger.warning(f"No text found on page {i+1}")
+    return text.strip()
+
+def extract_pdf_text(file):
+    text = pdf_to_text(file)
+    if len(text.strip()) < 100:
+        logger.info("Low text yield — switching to OCR")
+        file.seek(0)
+        text = scanned_pdf_to_text(file)
+    return text
+
+def docx_to_text(file):
+    logger.info("Extracting text from DOCX")
+    doc = DocxDocument(file)
+    return "\n".join([p.text for p in doc.paragraphs if p.text.strip()])
+
+def url_to_text(url: str):
+    logger.info(f"Scraping URL: {url}")
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "html.parser")
+    for tag in soup(["script", "style", "nav", "footer", "header"]):
+        tag.decompose()
+    text = soup.get_text(separator="\n")
+    text = re.sub(r"\n\s*\n+", "\n\n", text).strip()
     return text
 
 def chunk_text(text, target_words=400, overlap_percentage=0.25):

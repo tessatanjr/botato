@@ -8,8 +8,10 @@ pdf2image
 pillow
 pytesseract
 pytest
+python-docx
 python-dotenv
 python-multipart
+requests
 sentence-transformers
 spacy
 sqlalchemy==2.0.25

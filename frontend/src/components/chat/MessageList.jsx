@@ -12,8 +12,8 @@ export default function MessageList({ messages, isLoading }) {
   if (messages.length === 0 && !isLoading) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center text-center text-zinc-600 gap-3">
-        <span className="text-4xl opacity-40">🤖</span>
-        <p className="text-zinc-500 font-medium">Ready to chat</p>
+        <span className="text-4xl opacity-40">🥔</span>
+        <p className="text-zinc-500 font-medium">Botato is ready to chat</p>
         <p className="text-xs max-w-xs">
           Upload and index your documents, then ask anything.
         </p>

@@ -17,9 +17,10 @@ export default function FileList({ files }) {
       {files.map((f) => (
         <FileItem
           key={f.id}
-          file={f.file}
+          name={f.isUrl ? f.url : f.file.name}
           status={f.status}
           indexer={f.indexer}
+          isUrl={f.isUrl}
         />
       ))}
     </div>

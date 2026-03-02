@@ -9,7 +9,9 @@ export function useFileUpload() {
     const entries = newFiles
       .filter(
         (f) =>
-          !files.find((x) => x.file.name === f.name && x.indexer === indexer)
+          !files.find(
+            (x) => x.file && x.file.name === f.name && x.indexer === indexer
+          )
       )
       .map((f) => ({
         id: crypto.randomUUID(),
@@ -20,17 +22,37 @@ export function useFileUpload() {
     setFiles((prev) => [...prev, ...entries])
   }
 
+  const addUrl = (url) => {
+    if (files.find((x) => x.url === url && x.indexer === indexer)) return
+    setFiles((prev) => [
+      ...prev,
+      {
+        id: crypto.randomUUID(),
+        url,
+        name: url,
+        status: 'queued',
+        indexer,
+        isUrl: true,
+      },
+    ])
+  }
+
   const updateStatus = (id, status) =>
     setFiles((prev) => prev.map((f) => (f.id === id ? { ...f, status } : f)))
 
   const runIndexing = async () => {
     const queued = files.filter((f) => f.status === 'queued')
+
     for (const f of queued) {
       updateStatus(f.id, 'indexing')
       try {
-        await ingestFile(f.file, activeIndexer.embedding_provider)
+        const result = await ingestFile(
+          f.isUrl ? f.url : f.file,
+          activeIndexer.embedding_provider
+        )
         updateStatus(f.id, 'done')
-      } catch {
+      } catch (err) {
+        console.error('Indexing error:', err)
         updateStatus(f.id, 'error')
       }
     }
@@ -41,5 +63,5 @@ export function useFileUpload() {
     setFiles([])
   }
 
-  return { files, addFiles, runIndexing, resetDocuments }
+  return { files, addFiles, addUrl, runIndexing, resetDocuments }
 }
