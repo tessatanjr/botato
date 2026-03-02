@@ -1,0 +1,2191 @@
+{
+  "metadata": {
+    "timestamp": "2026-02-18T14:42:01.450868",
+    "embedding_provider": "minilm",
+    "llm_model": "gpt-4",
+    "top_k": 6,
+    "questions_file": "golden_question_set.json"
+  },
+  "aggregate_metrics": {
+    "total_questions": 84,
+    "successful_queries": 84,
+    "failed_queries": 0,
+    "average_recall_at_k": 0.75,
+    "average_mrr": 0.4912698412698412,
+    "average_f1_score": 0.38057208355035343,
+    "average_precision": 0.31142481046905207,
+    "average_recall": 0.6792978073059865,
+    "average_token_recall": 0.6792978073059865
+  },
+  "detailed_results": [
+    {
+      "question_id": "SFAQ-01",
+      "question": "What is my Stripe account username?",
+      "golden_answer": "Your Stripe account username is the email address you used to register.",
+      "predicted_answer": "Your Stripe account username is the email address you used to register.",
+      "golden_chunks": [
+        "Chunk 1"
+      ],
+      "retrieved_chunks": [
+        "Chunk 0",
+        "Chunk 14",
+        "Chunk 28",
+        "Chunk 27",
+        "Chunk 26",
+        "Chunk 25"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SFAQ-02",
+      "question": "What should I do if I forgot my Stripe account password?",
+      "golden_answer": "You can reset your password using the password reset option, and you'll receive a confirmation email once it's reset.",
+      "predicted_answer": "You should reset your password. You will receive a confirmation email once your password is reset.",
+      "golden_chunks": [
+        "Chunk 1"
+      ],
+      "retrieved_chunks": [
+        "Chunk 0",
+        "Chunk 1",
+        "Chunk 14",
+        "Chunk 4",
+        "Chunk 25",
+        "Chunk 26"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.6486486486486486,
+        "precision": 0.75,
+        "recall": 0.5714285714285714,
+        "token_recall": 0.5714285714285714
+      }
+    },
+    {
+      "question_id": "SFAQ-03",
+      "question": "What should I do if I can't complete two-step authentication?",
+      "golden_answer": "You can authenticate using your backup code or remove two-step authentication from your account.",
+      "predicted_answer": "If you can't complete two-step authentication, you can try authenticating with your backup code by signing in using your email address and password, and when prompted to complete two-step authentication, click 'Sign in another way', then follow the prompts to sign in using your backup code. This will disable two-step authentication.\n\nIf you don't have your backup code, you can remove two-step authentication from your account. If you\u2019re the account owner, submit an account recovery form. If you\u2019re not the account owner, the account\u2019s primary owner or administrator can reset your account\u2019s two-step authentication on the 'Team and security' page. You will receive an email with a link to regain access to your account.",
+      "golden_chunks": [
+        "Chunk 1"
+      ],
+      "retrieved_chunks": [
+        "Chunk 1",
+        "Chunk 0",
+        "Chunk 27",
+        "Chunk 28",
+        "Chunk 25",
+        "Chunk 29"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.19999999999999998,
+        "precision": 0.112,
+        "recall": 0.9333333333333333,
+        "token_recall": 0.9333333333333333
+      }
+    },
+    {
+      "question_id": "SFAQ-04",
+      "question": "How do I sign in using a backup code?",
+      "golden_answer": "Sign in with your email and password, click 'Sign in another way' when prompted, and follow the steps to use your backup code.",
+      "predicted_answer": "To sign in using your backup code, first sign in using your email address and password. When prompted to complete two-step authentication, click 'Sign in another way'. Then, follow the prompts to sign in using your backup code. This will disable two-step authentication.",
+      "golden_chunks": [
+        "Chunk 1"
+      ],
+      "retrieved_chunks": [
+        "Chunk 0",
+        "Chunk 1",
+        "Chunk 10",
+        "Chunk 20",
+        "Chunk 48",
+        "Chunk 26"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.5588235294117647,
+        "precision": 0.4222222222222222,
+        "recall": 0.8260869565217391,
+        "token_recall": 0.8260869565217391
+      }
+    },
+    {
+      "question_id": "SFAQ-05",
+      "question": "What if I don't have my backup code and still can't complete two-step authentication?",
+      "golden_answer": "If you're the account owner, submit an account recovery form to verify your identity. If you're not the owner, the account's primary owner or administrator can reset the accounts two-step authentication.",
+      "predicted_answer": "If you don't have your backup code and still can't complete two-step authentication, you can remove two-step authentication from your account. If you're the account owner, submit an account recovery form and provide detailed information to confirm your identity. Stripe will confirm your identity and remove the two-step authentication. If you're not the account owner, the account's primary owner or administrator resets your account\u2019s two-step authentication, and you'll receive an email with a link to regain access to your account.",
+      "golden_chunks": [
+        "Chunk 1",
+        "Chunk 2"
+      ],
+      "retrieved_chunks": [
+        "Chunk 1",
+        "Chunk 0",
+        "Chunk 27",
+        "Chunk 29",
+        "Chunk 28",
+        "Chunk 25"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.507936507936508,
+        "precision": 0.3516483516483517,
+        "recall": 0.9142857142857143,
+        "token_recall": 0.9142857142857143
+      }
+    },
+    {
+      "question_id": "SFAQ-06",
+      "question": "What should I do if I'm not receiving SMS verification codes?",
+      "golden_answer": "Wait up to 10 minutes, request a new code, or use your backup code or remove two-step authentication.",
+      "predicted_answer": "If you're not receiving any SMS verification codes, you should wait up to 10 minutes for the code to arrive as delivery times can vary. You can also request a new code. If neither of these methods work, you can sign in using your backup code or remove two-step authentication from your account.",
+      "golden_chunks": [
+        "Chunk 2"
+      ],
+      "retrieved_chunks": [
+        "Chunk 1",
+        "Chunk 0",
+        "Chunk 30",
+        "Chunk 14",
+        "Chunk 27",
+        "Chunk 28"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.45945945945945943,
+        "precision": 0.3090909090909091,
+        "recall": 0.8947368421052632,
+        "token_recall": 0.8947368421052632
+      }
+    },
+    {
+      "question_id": "SFAQ-07",
+      "question": "What should I do if my SMS verification code is incorrect?",
+      "golden_answer": "Request a new code and enter it as soon as it's received. Codes expire after a short time for security purposes.",
+      "predicted_answer": "If the system says the verification code you entered is incorrect, request a new code and enter it as soon as it\u2019s received. Codes expire after a short time for security purposes.",
+      "golden_chunks": [
+        "Chunk 2",
+        "Chunk 3"
+      ],
+      "retrieved_chunks": [
+        "Chunk 1",
+        "Chunk 0",
+        "Chunk 52",
+        "Chunk 30",
+        "Chunk 2",
+        "Chunk 28"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.2,
+        "f1_score": 0.8,
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SFAQ-08",
+      "question": "How can I change who receives account-related Stripe emails?",
+      "golden_answer": "Account-related emails must go to the account owner. To send them to others, you can set up email forwarding.",
+      "predicted_answer": "Account-related email notifications must go to the owner listed for the Stripe account. If you need to change the account owner, you can refer to the instructions on how to change the owner of a Stripe account. If you want account-related notifications to go to somebody who is not the account owner, you can set up e-mail forwarding to automatically forward on certain emails from Stripe to other email addresses.",
+      "golden_chunks": [
+        "Chunk 3"
+      ],
+      "retrieved_chunks": [
+        "Chunk 2",
+        "Chunk 26",
+        "Chunk 25",
+        "Chunk 27",
+        "Chunk 30",
+        "Chunk 24"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.3655913978494624,
+        "precision": 0.2328767123287671,
+        "recall": 0.85,
+        "token_recall": 0.85
+      }
+    },
+    {
+      "question_id": "SFAQ-09",
+      "question": "How can someone else receive payment-related notifications?",
+      "golden_answer": "You can add them as a team member and adjust their email notification settings.",
+      "predicted_answer": "If you would like someone else to receive payment-related notifications, such as payment successes, failures, and disputes, you can add them as a team member and adjust their email notifications accordingly.",
+      "golden_chunks": [
+        "Chunk 3"
+      ],
+      "retrieved_chunks": [
+        "Chunk 2",
+        "Chunk 29",
+        "Chunk 9",
+        "Chunk 23",
+        "Chunk 36",
+        "Chunk 30"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.5217391304347825,
+        "precision": 0.375,
+        "recall": 0.8571428571428571,
+        "token_recall": 0.8571428571428571
+      }
+    },
+    {
+      "question_id": "SFAQ-10",
+      "question": "How do I close my Stripe account?",
+      "golden_answer": "The account owner must go to Settings > Business > Account details in the Dashboard and click 'Close account.'",
+      "predicted_answer": "To close a Stripe account, you must be the owner of the account. Once confirmed, Navigate to Settings > Business > Account details in the Dashboard, ensure you're logged into the correct account, then click 'Close account'. Make sure to pay out any existing balances as a Stripe account cannot be closed with an existing balance. We also recommend exporting any reports that are required before closing.",
+      "golden_chunks": [
+        "Chunk 3",
+        "Chunk 4"
+      ],
+      "retrieved_chunks": [
+        "Chunk 3",
+        "Chunk 4",
+        "Chunk 0",
+        "Chunk 25",
+        "Chunk 2",
+        "Chunk 1"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.3614457831325301,
+        "precision": 0.22727272727272727,
+        "recall": 0.8823529411764706,
+        "token_recall": 0.8823529411764706
+      }
+    },
+    {
+      "question_id": "SFAQ-11",
+      "question": "Can I close my Stripe account if it has a balance?",
+      "golden_answer": "No. Negative balances must be brought to zero, and positive balances must be paid out before closing the account.",
+      "predicted_answer": "Stripe accounts cannot be closed with an existing balance. Negative balances must first be brought to zero, and positive balances must first be paid out to the bank account on file in order to close the account fully.",
+      "golden_chunks": [
+        "Chunk 5"
+      ],
+      "retrieved_chunks": [
+        "Chunk 3",
+        "Chunk 4",
+        "Chunk 22",
+        "Chunk 23",
+        "Chunk 2",
+        "Chunk 26"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.5614035087719298,
+        "precision": 0.42105263157894735,
+        "recall": 0.8421052631578947,
+        "token_recall": 0.8421052631578947
+      }
+    },
+    {
+      "question_id": "SFAQ-12",
+      "question": "What happens if there are disputes submitted after I close my account?",
+      "golden_answer": "The account owner remains responsible for refunds and disputes even after the account is closed.",
+      "predicted_answer": "Even if your account has been closed, you will still be responsible for any disputes that arise.",
+      "golden_chunks": [
+        "Chunk 4"
+      ],
+      "retrieved_chunks": [
+        "Chunk 17",
+        "Chunk 3",
+        "Chunk 16",
+        "Chunk 4",
+        "Chunk 18",
+        "Chunk 46"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.25,
+        "f1_score": 0.37500000000000006,
+        "precision": 0.35294117647058826,
+        "recall": 0.4,
+        "token_recall": 0.4
+      }
+    },
+    {
+      "question_id": "SFAQ-13",
+      "question": "What happens if I close my account with scheduled payouts pending?",
+      "golden_answer": "Scheduled payouts will still occur, but it will not be possible to retrieve any information about the payouts or Stripe account going forward. Stripe recommends waiting until all payouts complete.",
+      "predicted_answer": "Closing your account will not prevent scheduled payouts from occurring, but it will not be possible to retrieve any information about the payouts or the account going forward. If the corresponding payout fails, you may have issues in retrying the payout, as dashboard access is revoked. Therefore, it is recommended to wait until all funds have been successfully paid out to your bank account before closing your account.",
+      "golden_chunks": [
+        "Chunk 4"
+      ],
+      "retrieved_chunks": [
+        "Chunk 3",
+        "Chunk 4",
+        "Chunk 5",
+        "Chunk 11",
+        "Chunk 7",
+        "Chunk 10"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.4489795918367347,
+        "precision": 0.3235294117647059,
+        "recall": 0.7333333333333333,
+        "token_recall": 0.7333333333333333
+      }
+    },
+    {
+      "question_id": "SFAQ-14",
+      "question": "How long does the first Stripe payout take?",
+      "golden_answer": "There is a 7\u201314 day waiting period for the first payout, which cannot be waived.",
+      "predicted_answer": "The first Stripe payout has a waiting period of 7-14 days. This delay is for risk mitigation and cannot be waived under any circumstances. However, the first payout might take longer, depending on the industry risk level and country of operation. For businesses in certain industries and in countries such as Brazil, the waiting period can be up to 30 days.",
+      "golden_chunks": [
+        "Chunk 5",
+        "Chunk 6"
+      ],
+      "retrieved_chunks": [
+        "Chunk 5",
+        "Chunk 8",
+        "Chunk 7",
+        "Chunk 10",
+        "Chunk 9",
+        "Chunk 12"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.33333333333333337,
+        "precision": 0.20967741935483872,
+        "recall": 0.8125,
+        "token_recall": 0.8125
+      }
+    },
+    {
+      "question_id": "SFAQ-15",
+      "question": "It has been 7 days, why is my payout not in my account?",
+      "golden_answer": "Your first payout may take longer than 7 days depending on your industry risk level and country, extending up to 14 to 30 days. Delays can also be caused by bank processing during weekends and holidays, or pending account verification issues. Do ensure your linked bank account details are correct.",
+      "predicted_answer": "Your payout might be delayed due to several reasons. If this is your first payout, there is a 7-14 day waiting period which could be longer depending on your industry risk level and country of operation. Other reasons for delay may include weekend or holiday bank processing delays, changes made to your payout method or schedule during the waiting period, or any required account verification issues. Please verify these details and check your payout schedule in your dashboard. If the payout is still missing after considering these factors, you might need to contact Stripe for more specific information.",
+      "golden_chunks": [
+        "Chunk 6",
+        "Chunk 7"
+      ],
+      "retrieved_chunks": [
+        "Chunk 5",
+        "Chunk 7",
+        "Chunk 11",
+        "Chunk 10",
+        "Chunk 6",
+        "Chunk 12"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.38926174496644295,
+        "precision": 0.29292929292929293,
+        "recall": 0.58,
+        "token_recall": 0.58
+      }
+    },
+    {
+      "question_id": "SFAQ-16",
+      "question": "I set my payout to daily, but I haven't received the funds. Why?",
+      "golden_answer": "A daily payout schedule only determines how often Stripe sends money, not how quickly funds become available. Your payout speed dictates when pending balances are ready. Payouts may also be delayed if your balance is below the currency's minimum requirement or due to weekend and holiday bank processing.",
+      "predicted_answer": "There could be several reasons you haven't received your funds yet. It could be due to the payout speed, as it takes 3 business days from a transaction to pay out the funds. Also, banks may take additional 2-3 days to post the funds, and this can be delayed further by weekends and public holidays. Moreover, if this is your first payout, Stripe has a 7-14 day waiting period. Any updates made during this waiting period to your payout method or schedule will only take effect after the waiting period ends. Another possible reason is issues with account verification. You may need to check your account status in the Dashboard to see if additional information is required to verify your account. Finally, the funds may not have been paid out because your available account balance does not exceed the minimum payout amount for certain currencies.",
+      "golden_chunks": [
+        "Chunk 8",
+        "Chunk 9"
+      ],
+      "retrieved_chunks": [
+        "Chunk 7",
+        "Chunk 5",
+        "Chunk 6",
+        "Chunk 11",
+        "Chunk 9",
+        "Chunk 10"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.2,
+        "f1_score": 0.25380710659898476,
+        "precision": 0.16891891891891891,
+        "recall": 0.5102040816326531,
+        "token_recall": 0.5102040816326531
+      }
+    },
+    {
+      "question_id": "SFAQ-17",
+      "question": "How do I set up monthly payouts in India?",
+      "golden_answer": "Stripe accounts in India only support daily payouts. Manual, weekly, and monthly payout schedules aren't available.",
+      "predicted_answer": "Monthly payout schedules aren\u2019t available for accounts in India. Payouts are processed automatically on a daily basis.",
+      "golden_chunks": [
+        "Chunk 11",
+        "Chunk 12"
+      ],
+      "retrieved_chunks": [
+        "Chunk 11",
+        "Chunk 10",
+        "Chunk 37",
+        "Chunk 42",
+        "Chunk 20",
+        "Chunk 9"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.6285714285714287,
+        "precision": 0.6111111111111112,
+        "recall": 0.6470588235294118,
+        "token_recall": 0.6470588235294118
+      }
+    },
+    {
+      "question_id": "SFAQ-18",
+      "question": "How long does it take for funds to become available in Brazil?",
+      "golden_answer": "Funds become available after 30 days for domestic card payments, 5 days for international card payments, and 2 days for Boleto, PIX, and domestic prepaid card payments.",
+      "predicted_answer": "Payments become available to be paid out to your bank account in Brazil in:\n- 30 days for domestic (issued in BR) card payments\n- 5 days for international card payments\n- 2 days for Boleto, PIX payments, and domestic prepaid card payments.",
+      "golden_chunks": [
+        "Chunk 13"
+      ],
+      "retrieved_chunks": [
+        "Chunk 11",
+        "Chunk 28",
+        "Chunk 12",
+        "Chunk 34",
+        "Chunk 5",
+        "Chunk 20"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.7164179104477612,
+        "precision": 0.6,
+        "recall": 0.8888888888888888,
+        "token_recall": 0.8888888888888888
+      }
+    },
+    {
+      "question_id": "SFAQ-19",
+      "question": "When will my daily payout arrive in the UAE during holiday season?",
+      "golden_answer": "Payouts can be delayed during national holidays. For users on daily payouts, payouts typically arrive within 1\u20132 days after the holiday period ends.",
+      "predicted_answer": "During the holiday season in the UAE, your daily payouts can be delayed as banking partners are closed during national holidays. After the holiday period ends, you can expect your payout to arrive within 1-2 days. However, the specific dates of the holidays can significantly impact the payout schedule and can be announced at short notice. In such cases, Stripe will inform you of any expected delays via your Dashboard once the exact holiday dates are confirmed.",
+      "golden_chunks": [
+        "Chunk 11",
+        "Chunk 10"
+      ],
+      "retrieved_chunks": [
+        "Chunk 9",
+        "Chunk 11",
+        "Chunk 10",
+        "Chunk 7",
+        "Chunk 12",
+        "Chunk 5"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.3529411764705882,
+        "precision": 0.23076923076923078,
+        "recall": 0.75,
+        "token_recall": 0.75
+      }
+    },
+    {
+      "question_id": "SFAQ-20",
+      "question": "When will my funds be deposited into my bank account in Indonesia?",
+      "golden_answer": "Stripe deposits funds into bank accounts four business days after successful payment, excluding weekends and public holidays.",
+      "predicted_answer": "Stripe will deposit funds into your bank account in Indonesia four business days after successful payment. However, they do not deposit funds on the weekend or public holidays. If a charge was created over the weekend, the funds will be deposited on the next business day of the following week.",
+      "golden_chunks": [
+        "Chunk 13"
+      ],
+      "retrieved_chunks": [
+        "Chunk 12",
+        "Chunk 13",
+        "Chunk 11",
+        "Chunk 34",
+        "Chunk 33",
+        "Chunk 10"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.3582089552238806,
+        "precision": 0.24,
+        "recall": 0.7058823529411765,
+        "token_recall": 0.7058823529411765
+      }
+    },
+    {
+      "question_id": "SFAQ-21",
+      "question": "Can I use manual payout in Indonesia?",
+      "golden_answer": "Yes. Stripe accounts in Indonesia support both manual and automatic payouts.",
+      "predicted_answer": "Yes, Stripe accounts based in Indonesia support manual and automatic payouts.",
+      "golden_chunks": [
+        "Chunk 14"
+      ],
+      "retrieved_chunks": [
+        "Chunk 13",
+        "Chunk 12",
+        "Chunk 11",
+        "Chunk 38",
+        "Chunk 34",
+        "Chunk 36"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.9090909090909091,
+        "precision": 0.9090909090909091,
+        "recall": 0.9090909090909091,
+        "token_recall": 0.9090909090909091
+      }
+    },
+    {
+      "question_id": "SFAQ-22",
+      "question": "Who is allowed to add or edit bank account details on a Stripe account?",
+      "golden_answer": "Only users with Admin or Owner permissions can add, edit, or delete bank account details.",
+      "predicted_answer": "The context does not provide explicit information on who is allowed to add or edit bank account details on a Stripe account.",
+      "golden_chunks": [
+        "Chunk 14"
+      ],
+      "retrieved_chunks": [
+        "Chunk 26",
+        "Chunk 14",
+        "Chunk 13",
+        "Chunk 24",
+        "Chunk 25",
+        "Chunk 27"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.3243243243243243,
+        "precision": 0.2727272727272727,
+        "recall": 0.4,
+        "token_recall": 0.4
+      }
+    },
+    {
+      "question_id": "SFAQ-23",
+      "question": "How do I add a bank account for payouts in Stripe?",
+      "golden_answer": "From the Dashboard, click the Settings gear icon, go to Account Settings \u2192 Business \u2192 Bank accounts and currencies, select the payout currency, and click Add a bank account. After verifying your credentials, enter your bank details and save.",
+      "predicted_answer": "To add a bank account for payouts in Stripe, follow these steps:\n\n1. Go to your Stripe Dashboard and click the Settings gear in the upper-right corner of the page.\n2. Under Account Settings, click Business.\n3. Select the Bank accounts and currencies tab.\n4. Under Settlement currencies and bank accounts, find the currency you use for payouts and click 'Add a bank account'.\n5. If you have more than one currency enabled on your account, you'll need a bank account for each currency.\n6. You may be asked to verify your credentials.\n7. Once verified, enter your bank account information. The bank account must be a checking account.\n8. Ensure the account number, routing number, and account holder name match your bank statement.\n9. The bank account currency must match the currency in your payout settings.\n10. Click 'Add bank account' to save.\n\nRemember, only users with Admin or Owner permissions can add, edit, or delete bank account details.",
+      "golden_chunks": [
+        "Chunk 14",
+        "Chunk 15"
+      ],
+      "retrieved_chunks": [
+        "Chunk 14",
+        "Chunk 13",
+        "Chunk 13",
+        "Chunk 4",
+        "Chunk 6",
+        "Chunk 18"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.3316582914572864,
+        "precision": 0.2037037037037037,
+        "recall": 0.8918918918918919,
+        "token_recall": 0.8918918918918919
+      }
+    },
+    {
+      "question_id": "SFAQ-24",
+      "question": "How can I find out what a Stripe charge on my bank statement is for?",
+      "golden_answer": "The charge is likely from a business that uses Stripe. You can use Stripe's secure charge lookup tool to identify the business and contact them directly for a refund.",
+      "predicted_answer": "If your bank statement has a charge from Stripe that you don't recognize, it may be from a business using Stripe's payment processing services. You can use the secure charge lookup tool to identify the business. If you don't recognize the business name or want a refund, reach out to the business directly. Stripe is unable to issue refunds on their behalf. If you can't get in touch with the business, they're unresponsive, or you believe the business might be fraudulent, reach out to your bank.",
+      "golden_chunks": [
+        "Chunk 15",
+        "Chunk 16"
+      ],
+      "retrieved_chunks": [
+        "Chunk 14",
+        "Chunk 15",
+        "Chunk 13",
+        "Chunk 4",
+        "Chunk 18",
+        "Chunk 22"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.3966942148760331,
+        "precision": 0.26373626373626374,
+        "recall": 0.8,
+        "token_recall": 0.8
+      }
+    },
+    {
+      "question_id": "SFAQ-25",
+      "question": "Can Stripe issue a refund for a charge I don't recognize?",
+      "golden_answer": "No. Stripe cannot issue refunds on behalf of businesses. You must contact the business directly or reach out to your bank.",
+      "predicted_answer": "No, Stripe cannot issue refunds on behalf of the business. If you don't recognize a charge, you should reach out to the business directly or to your bank if the business is unresponsive or possibly fraudulent.",
+      "golden_chunks": [
+        "Chunk 15",
+        "Chunk 16"
+      ],
+      "retrieved_chunks": [
+        "Chunk 15",
+        "Chunk 22",
+        "Chunk 21",
+        "Chunk 14",
+        "Chunk 30",
+        "Chunk 16"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.6206896551724138,
+        "precision": 0.4864864864864865,
+        "recall": 0.8571428571428571,
+        "token_recall": 0.8571428571428571
+      }
+    },
+    {
+      "question_id": "SFAQ-26",
+      "question": "Can I add more evidence after submitting my dispute response?",
+      "golden_answer": "No. You have only one opportunity to submit evidence, and you can't add more after submission.",
+      "predicted_answer": "No, you cannot add more evidence after submitting your dispute response. You have just one opportunity to submit evidence.",
+      "golden_chunks": [
+        "Chunk 18",
+        "Chunk 19"
+      ],
+      "retrieved_chunks": [
+        "Chunk 17",
+        "Chunk 18",
+        "Chunk 16",
+        "Chunk 21",
+        "Chunk 50",
+        "Chunk 28"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.6666666666666667,
+        "precision": 0.631578947368421,
+        "recall": 0.7058823529411765,
+        "token_recall": 0.7058823529411765
+      }
+    },
+    {
+      "question_id": "SFAQ-27",
+      "question": "Who makes the final decision on a disputed payment?",
+      "golden_answer": "The card issuer makes the final decision based on the evidence submitted.",
+      "predicted_answer": "The card issuer makes the final decision on a disputed payment based on the provided evidence.",
+      "golden_chunks": [
+        "Chunk 16",
+        "Chunk 17",
+        "Chunk 19"
+      ],
+      "retrieved_chunks": [
+        "Chunk 16",
+        "Chunk 17",
+        "Chunk 18",
+        "Chunk 46",
+        "Chunk 50",
+        "Chunk 23"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.7857142857142857,
+        "precision": 0.6875,
+        "recall": 0.9166666666666666,
+        "token_recall": 0.9166666666666666
+      }
+    },
+    {
+      "question_id": "SFAQ-28",
+      "question": "How do I activate a new payment method in Stripe?",
+      "golden_answer": "Go to Settings \u2192 Payments \u2192 Payment methods in the Dashboard and click Turn on next to the payment method you want to accept.",
+      "predicted_answer": "In Stripe, to activate a new payment method go to your Dashboard. Click the Settings gear icon in the upper-right corner of the page, then under Product settings, click Payments, then select the Payment methods tab. Click Turn on next to each payment method you want to accept. Depending on the payment method, you may be prompted to provide additional information required by the scheme. Once turned on, most payment methods will show as Active immediately, while a select few may temporarily show Pending. Depending on your Stripe integration, you may need to take additional steps to start accepting that payment method on your site.",
+      "golden_chunks": [
+        "Chunk 20"
+      ],
+      "retrieved_chunks": [
+        "Chunk 19",
+        "Chunk 18",
+        "Chunk 17",
+        "Chunk 22",
+        "Chunk 15",
+        "Chunk 14"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.328125,
+        "precision": 0.19811320754716982,
+        "recall": 0.9545454545454546,
+        "token_recall": 0.9545454545454546
+      }
+    },
+    {
+      "question_id": "SFAQ-29",
+      "question": "How do I edit payment methods for invoices using the Hosted Invoice Page?",
+      "golden_answer": "You can configure payment methods from the Invoicing settings page under Billing and select or create a payment method configuration.",
+      "predicted_answer": "To edit payment methods for invoices using the Hosted Invoice Page, follow these steps: \n1. Go to Settings, and under Product settings, click Billing. \n2. Click the Invoices tab.\n3. Scroll down to Default payment methods. \n4. Here, you can change the Payment method configuration using the selector. \n5. If you need to create a new configuration, click Edit payment methods to go to Payment settings. \n6. Click the Create configuration button, give the configuration a name, and click Save configuration. \n7. Turn on the payment methods you want to activate. \n8. Once the new configuration is completed, return to Invoicing settings and select the new configuration.\n9. Click Save.\nYou can also edit which payment methods you want to accept for a specific invoice from the Invoices and Subscriptions editors.",
+      "golden_chunks": [
+        "Chunk 21"
+      ],
+      "retrieved_chunks": [
+        "Chunk 20",
+        "Chunk 19",
+        "Chunk 18",
+        "Chunk 13",
+        "Chunk 12",
+        "Chunk 21"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.16666666666666666,
+        "f1_score": 0.2384105960264901,
+        "precision": 0.13740458015267176,
+        "recall": 0.9,
+        "token_recall": 0.9
+      }
+    },
+    {
+      "question_id": "SFAQ-30",
+      "question": "Can I issue a partial refund instead of a full refund?",
+      "golden_answer": "The default refund amount is the full charge amount, but you can adjust the amount to give a partial refund.",
+      "predicted_answer": "Yes, you can issue a partial refund instead of a full refund. You just need to enter a different refund amount than the full charge amount.",
+      "golden_chunks": [
+        "Chunk 22"
+      ],
+      "retrieved_chunks": [
+        "Chunk 22",
+        "Chunk 21",
+        "Chunk 30",
+        "Chunk 17",
+        "Chunk 46",
+        "Chunk 15"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.5217391304347826,
+        "precision": 0.46153846153846156,
+        "recall": 0.6,
+        "token_recall": 0.6
+      }
+    },
+    {
+      "question_id": "SFAQ-31",
+      "question": "What is the refund test mode for?",
+      "golden_answer": "Test mode allows you to simulate the refund process without processing real transactions or affecting actual customer data. This allows you to practice before performing live refunds, which have a very limited cancellation window.",
+      "predicted_answer": "The refund test mode is used to try out the refund process beforehand. This can be useful because once a refund is initiated, there is a very limited window to cancel it. By using the refund test mode, user can practice creating refunds before doing so on live charges.",
+      "golden_chunks": [
+        "Chunk 22",
+        "Chunk 23"
+      ],
+      "retrieved_chunks": [
+        "Chunk 22",
+        "Chunk 21",
+        "Chunk 30",
+        "Chunk 48",
+        "Chunk 47",
+        "Chunk 27"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.38554216867469876,
+        "precision": 0.32653061224489793,
+        "recall": 0.47058823529411764,
+        "token_recall": 0.47058823529411764
+      }
+    },
+    {
+      "question_id": "SFAQ-32",
+      "question": "How do I transfer ownership if the current Stripe account owner is no longer with the company?",
+      "golden_answer": "Only the current owner can transfer ownership. If they are unavailable, you must contact Stripe Support.",
+      "predicted_answer": "If the current owner of a Stripe account is no longer with the company, you should reach out to Stripe Support. They may require a letter from a company signatory confirming and detailing the change of Company Representative and the transfer of ownership of the Stripe account. The letter should be on company's letterhead and authorize the appointment of the new Company Representative, and the transfer of ownership to a specified user. It should include the business name, tax ID, business address, both the previous and new Company Representative\u2019s name and date of birth (if available) and new Super Administrator\u2019s email address that they'll use to log into Stripe. The signatory on this letter should not be the person who is being appointed as the new Company Representative.",
+      "golden_chunks": [
+        "Chunk 26"
+      ],
+      "retrieved_chunks": [
+        "Chunk 25",
+        "Chunk 23",
+        "Chunk 24",
+        "Chunk 26",
+        "Chunk 3",
+        "Chunk 4"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.25,
+        "f1_score": 0.13513513513513511,
+        "precision": 0.07575757575757576,
+        "recall": 0.625,
+        "token_recall": 0.625
+      }
+    },
+    {
+      "question_id": "SFAQ-33",
+      "question": "Can Stripe accounts in Brazil transfer ownership?",
+      "golden_answer": "No. Ownership transfer is not allowed for individual or sole proprietorship accounts in Brazil.",
+      "predicted_answer": "In Brazil, the transfer of ownership for Stripe accounts is not allowed for individual or sole proprietorship accounts (linked to a CPF).",
+      "golden_chunks": [
+        "Chunk 25"
+      ],
+      "retrieved_chunks": [
+        "Chunk 24",
+        "Chunk 23",
+        "Chunk 25",
+        "Chunk 26",
+        "Chunk 13",
+        "Chunk 4"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "f1_score": 0.7222222222222223,
+        "precision": 0.5909090909090909,
+        "recall": 0.9285714285714286,
+        "token_recall": 0.9285714285714286
+      }
+    },
+    {
+      "question_id": "SFAQ-34",
+      "question": "What documents are required for identity and address verification?",
+      "golden_answer": "Stripe may require one Proof of Identity document and one Proof of Home Address document that meet specific format and validity requirements.",
+      "predicted_answer": "For identity verification, you need to provide a valid, non-expired document such as both front and back of a driver\u2019s license or identity card or the entire personal information page of a passport. The documents must be uploaded in full color and must be clear and large enough to read. \n\nFor address verification, documents must be clear and large enough to read, dated within the past six months and it must contain your full name and address. At least one full page of the document needs to be uploaded in .png, .jpg, or .pdf format. \n\nThese documents must be uploaded through the Stripe Dashboard and the information in these documents must match the information on your Stripe account. Reviews can take up to 24 hours.",
+      "golden_chunks": [
+        "Chunk 29"
+      ],
+      "retrieved_chunks": [
+        "Chunk 29",
+        "Chunk 28",
+        "Chunk 27",
+        "Chunk 26",
+        "Chunk 10",
+        "Chunk 1"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.1476510067114094,
+        "precision": 0.08661417322834646,
+        "recall": 0.5,
+        "token_recall": 0.5
+      }
+    },
+    {
+      "question_id": "SFAQ-35",
+      "question": "Can I email my verification documents to Stripe?",
+      "golden_answer": "No. Due to security reasons, documents must be uploaded through the Stripe Dashboard and cannot be sent by email.",
+      "predicted_answer": "No, you cannot email your verification documents to Stripe. They must be uploaded through the Dashboard due to the sensitive nature of the documents.",
+      "golden_chunks": [
+        "Chunk 30",
+        "Chunk 31"
+      ],
+      "retrieved_chunks": [
+        "Chunk 30",
+        "Chunk 28",
+        "Chunk 27",
+        "Chunk 2",
+        "Chunk 13",
+        "Chunk 1"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.6046511627906976,
+        "precision": 0.5416666666666666,
+        "recall": 0.6842105263157895,
+        "token_recall": 0.6842105263157895
+      }
+    },
+    {
+      "question_id": "SFAQ-36",
+      "question": "How much does Stripe charge per transaction?",
+      "golden_answer": "I don't know",
+      "predicted_answer": "I'm sorry, but I do not know the answer.",
+      "golden_chunks": [],
+      "retrieved_chunks": [
+        "Chunk 34",
+        "Chunk 51",
+        "Chunk 47",
+        "Chunk 18",
+        "Chunk 39",
+        "Chunk 22"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.125,
+        "precision": 0.08333333333333333,
+        "recall": 0.25,
+        "token_recall": 0.25
+      }
+    },
+    {
+      "question_id": "SFAQ-37",
+      "question": "Can I use Stripe if I'm an individual/freelancer rather than a registered business?",
+      "golden_answer": "I don't know",
+      "predicted_answer": "I'm sorry, but I do not know the answer. Could you please rephrase or add more detail to your question?",
+      "golden_chunks": [],
+      "retrieved_chunks": [
+        "Chunk 34",
+        "Chunk 51",
+        "Chunk 47",
+        "Chunk 18",
+        "Chunk 39",
+        "Chunk 22"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.07692307692307693,
+        "precision": 0.045454545454545456,
+        "recall": 0.25,
+        "token_recall": 0.25
+      }
+    },
+    {
+      "question_id": "SFAQ-38",
+      "question": "Does Stripe offer volume discounts for high-transaction businesses?",
+      "golden_answer": "I don't know",
+      "predicted_answer": "I'm sorry, but there's no context given for me to answer.",
+      "golden_chunks": [],
+      "retrieved_chunks": [
+        "Chunk 34",
+        "Chunk 51",
+        "Chunk 47",
+        "Chunk 18",
+        "Chunk 39",
+        "Chunk 22"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.10526315789473685,
+        "precision": 0.06666666666666667,
+        "recall": 0.25,
+        "token_recall": 0.25
+      }
+    },
+    {
+      "question_id": "SFAQ-39",
+      "question": "Does Stripe support cryptocurrency payments?",
+      "golden_answer": "I don't know",
+      "predicted_answer": "I’m sorry, but I don’t have enough context or a question to provide an answer.",
+      "golden_chunks": [],
+      "retrieved_chunks": [
+        "Chunk 34",
+        "Chunk 51",
+        "Chunk 47",
+        "Chunk 18",
+        "Chunk 39",
+        "Chunk 22"
+      ],
+      "source_document": "stripe_faq_24p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.1818181818181818,
+        "precision": 0.1111111111111111,
+        "recall": 0.5,
+        "token_recall": 0.5
+      }
+    },
+    {
+      "question_id": "SPM-01",
+      "question": "Why is it important to offer local payment methods to international customers?",
+      "golden_answer": "Customer payment preferences vary by location. A lack of familiar payment methods could cut off entire countries from your addressable market",
+      "predicted_answer": "Offering local payment methods to international customers is important because the way customers prefer to pay for goods or services online varies drastically by location. Providing a familiar and relevant payment experience could help reach more customers globally as local payment methods may be necessary to capture the total market opportunity in new regions. For instance, 54% of online transactions in China involve digital wallets such as Alipay or WeChat Pay. Without adapting to these local preferences, businesses risk cutting off entire countries from their potential market.",
+      "golden_chunks": [
+        "Chunk 1"
+      ],
+      "retrieved_chunks": [
+        "Chunk 0",
+        "Chunk 2",
+        "Chunk 1",
+        "Chunk 15",
+        "Chunk 22",
+        "Chunk 17"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "f1_score": 0.2777777777777778,
+        "precision": 0.1724137931034483,
+        "recall": 0.7142857142857143,
+        "token_recall": 0.7142857142857143
+      }
+    },
+    {
+      "question_id": "SPM-02",
+      "question": "How does Stripe help businesses manage the complexity of global payments?",
+      "golden_answer": "Stripe makes it easy for any type of business anywhere in the world to discover and accept popular payment methods with a single integration.",
+      "predicted_answer": "Stripe helps businesses manage the complexity of global payments by enabling them to accept multiple payment methods with a single integration. Its product suite comes with built-in global payment support which helps in creating localized payment experiences. In addition, Stripe offers Stripe Checkout for a localized and compliant payments experience for global customers, and also the ability to add and scale global payment method support without complicated processes. Payments made appear in the Stripe Dashboard, simplifying operational complexity. Furthermore, Stripe can convert certain payment methods into direct debits allowing customers to use them for subscription services. Stripe also helps businesses discover and accept popular payment methods throughout the world.",
+      "golden_chunks": [
+        "Chunk 1",
+        "Chunk 2"
+      ],
+      "retrieved_chunks": [
+        "Chunk 15",
+        "Chunk 0",
+        "Chunk 17",
+        "Chunk 18",
+        "Chunk 16",
+        "Chunk 1"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.16666666666666666,
+        "f1_score": 0.2537313432835821,
+        "precision": 0.15454545454545454,
+        "recall": 0.7083333333333334,
+        "token_recall": 0.7083333333333334
+      }
+    },
+    {
+      "question_id": "SPM-03",
+      "question": "What are the main benefits of accepting multiple payment methods?",
+      "golden_answer": "Reach more customers, increase conversion, reduce fraud and disputes, optimize your transaction costs.",
+      "predicted_answer": "The main benefits of accepting multiple payment methods are: you may be able to lower your fees by accepting less costly methods such as bank debits; you can improve conversion in your domestic market and expand globally by offering relevant payment methods; you can support different customer and business needs; you can reach more customers globally, especially in new markets where different payment methods are preferred; and you can securely and successfully accept large payments which is beneficial for businesses selling professional services or wholesale products. Furthermore, it helps in reducing operational complexity and allows for standardized processes such as fulfillment, customer support, and refunds.",
+      "golden_chunks": [
+        "Chunk 4"
+      ],
+      "retrieved_chunks": [
+        "Chunk 4",
+        "Chunk 1",
+        "Chunk 12",
+        "Chunk 18",
+        "Chunk 2",
+        "Chunk 15"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.10169491525423728,
+        "precision": 0.05714285714285714,
+        "recall": 0.46153846153846156,
+        "token_recall": 0.46153846153846156
+      }
+    },
+    {
+      "question_id": "SPM-04",
+      "question": "How do payment methods help reduce fraud and disputes?",
+      "golden_answer": "You can choose payment methods that match your risk preferences. As a general rule, the better the level of customer authentication, the lower the likelihood of fraudulent and disputed payments",
+      "predicted_answer": "The context mentions that digital wallets typically require customer verification (like biometrics, SMS, passcode) to complete a payment, which could help reduce fraud and disputes. Bank debits are mentioned as having the lowest dispute rate among the given payment methods. Furthermore, authenticated bank debit methods add a layer of verification to complete a payment, providing another potential safeguard against fraud and disputes. The ability to securely and successfully accept large payments, such as through invoicing customers, can also protect a business and hence reduce disputes.",
+      "golden_chunks": [
+        "Chunk 4"
+      ],
+      "retrieved_chunks": [
+        "Chunk 18",
+        "Chunk 16",
+        "Chunk 5",
+        "Chunk 6",
+        "Chunk 12",
+        "Chunk 38"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.24347826086956523,
+        "precision": 0.16470588235294117,
+        "recall": 0.4666666666666667,
+        "token_recall": 0.4666666666666667
+      }
+    },
+    {
+      "question_id": "SPM-05",
+      "question": "Which payment methods support recurring payments?",
+      "golden_answer": "Cards, digital wallets, bank debits",
+      "predicted_answer": "The payment methods that support recurring payments include Cards, Digital wallets, Bank debits and certain authenticated bank debits such as iDEAL, SOFORT, or Bancontact, which are converted into direct debits by Stripe.",
+      "golden_chunks": [
+        "Chunk 6"
+      ],
+      "retrieved_chunks": [
+        "Chunk 12",
+        "Chunk 6",
+        "Chunk 38",
+        "Chunk 17",
+        "Chunk 11",
+        "Chunk 5"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.2702702702702703,
+        "precision": 0.15625,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-06",
+      "question": "Which payment methods provide delayed payment confirmation?",
+      "golden_answer": "Bank debits, bank credit transfers, Buy now pay later, cash based payment methods",
+      "predicted_answer": "Bank debits, Bank transfers, \"Buy now, pay later\", and Cash-based payment methods provide delayed payment confirmation.",
+      "golden_chunks": [
+        "Chunk 6",
+        "Chunk 7"
+      ],
+      "retrieved_chunks": [
+        "Chunk 6",
+        "Chunk 29",
+        "Chunk 9",
+        "Chunk 40",
+        "Chunk 18",
+        "Chunk 5"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.8000000000000002,
+        "precision": 0.7058823529411765,
+        "recall": 0.9230769230769231,
+        "token_recall": 0.9230769230769231
+      }
+    },
+    {
+      "question_id": "SPM-07",
+      "question": "Do cash-based payment methods support refunds or disputes?",
+      "golden_answer": "No refunds, no disputes.",
+      "predicted_answer": "No",
+      "golden_chunks": [
+        "Chunk 6",
+        "Chunk 7"
+      ],
+      "retrieved_chunks": [
+        "Chunk 5",
+        "Chunk 36",
+        "Chunk 6",
+        "Chunk 21",
+        "Chunk 22",
+        "Chunk 38"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "f1_score": 0.4,
+        "precision": 1.0,
+        "recall": 0.25,
+        "token_recall": 0.25
+      }
+    },
+    {
+      "question_id": "SPM-08",
+      "question": "What payment methods are recommended for e-commerce and marketplaces?",
+      "golden_answer": "Cards, digital wallets, authenticated bank debits, Buy now pay later.",
+      "predicted_answer": "The recommended payment methods for e-commerce and marketplaces are Cards, digital wallets, authenticated bank debits, and \"buy now, pay later\" options.",
+      "golden_chunks": [
+        "Chunk 8"
+      ],
+      "retrieved_chunks": [
+        "Chunk 4",
+        "Chunk 2",
+        "Chunk 7",
+        "Chunk 0",
+        "Chunk 1",
+        "Chunk 39"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.625,
+        "precision": 0.45454545454545453,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-09",
+      "question": "Why are frictionless checkout experiences especially important for e-commerce and marketplace businesses?",
+      "golden_answer": "Customers expect streamlined payment experiences that give them what they want when they want it.",
+      "predicted_answer": "Frictionless checkout experiences are especially important for e-commerce and marketplace businesses because customers expect streamlined payment experiences. The right set of payment methods not only offers payment flexibility and convenience to maximize conversion, but also reduces fraud and increases transaction speed. Stored payment information allows for one-click checkout experiences, enhancing ease and efficiency for the customers. This is particularly crucial for e-commerce businesses that rely on real-time payment notifications to manage their shipping flows or refunds to promote customer loyalty.",
+      "golden_chunks": [
+        "Chunk 8"
+      ],
+      "retrieved_chunks": [
+        "Chunk 8",
+        "Chunk 9",
+        "Chunk 0",
+        "Chunk 7",
+        "Chunk 2",
+        "Chunk 22"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.12121212121212122,
+        "precision": 0.07142857142857142,
+        "recall": 0.4,
+        "token_recall": 0.4
+      }
+    },
+    {
+      "question_id": "SPM-10",
+      "question": "How do digital wallets and authenticated bank debits help to increase conversion?",
+      "golden_answer": "It allows customers to use stored payment information and the added verification also lowers the possibility of disputes",
+      "predicted_answer": "Digital wallets and authenticated bank debits help increase conversion by allowing customers to use stored payment information, reducing the need for them to enter their details each time they make a payment. This can streamline the checkout process and make it more convenient for customers. The added layer of verification in both methods also lowers the possibility of disputes, increasing transaction speed and reducing fraud. Digital wallets even allow one-click checkout experiences. For higher-value goods, payments can be broken down into smaller instalments to increase affordability and consequently, conversion rates. Furthermore, the adoption of digital wallets and authenticated bank debits can extend the seller's reach, especially in geographies where these forms of payment are preferred.",
+      "golden_chunks": [
+        "Chunk 8",
+        "Chunk 9"
+      ],
+      "retrieved_chunks": [
+        "Chunk 7",
+        "Chunk 5",
+        "Chunk 6",
+        "Chunk 8",
+        "Chunk 2",
+        "Chunk 26"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.25,
+        "f1_score": 0.25,
+        "precision": 0.1440677966101695,
+        "recall": 0.9444444444444444,
+        "token_recall": 0.9444444444444444
+      }
+    },
+    {
+      "question_id": "SPM-11",
+      "question": "Why are cards and digital wallets ideal for on-demand services?",
+      "golden_answer": "Immediate confirmation that transaction was successful, store customer payment details on file and fast checkout.",
+      "predicted_answer": "Cards and digital wallets are ideal for on-demand services because they offer immediate confirmation of successful transactions. These payment options also allow for storing customer payment details on file and enable one-tap confirmations, shortening the checkout experience. Additionally, they are more secure since authentication is required to complete the payment, which lowers fraud and dispute rates.",
+      "golden_chunks": [
+        "Chunk 10"
+      ],
+      "retrieved_chunks": [
+        "Chunk 9",
+        "Chunk 1",
+        "Chunk 10",
+        "Chunk 8",
+        "Chunk 7",
+        "Chunk 11"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "f1_score": 0.273972602739726,
+        "precision": 0.1724137931034483,
+        "recall": 0.6666666666666666,
+        "token_recall": 0.6666666666666666
+      }
+    },
+    {
+      "question_id": "SPM-12",
+      "question": "Which payment methods are best for SaaS and subscription businesses?",
+      "golden_answer": "Cards, digital wallets, bank debits.",
+      "predicted_answer": "The best payment methods for SaaS and subscription businesses are cards, digital wallets, and bank debits.",
+      "golden_chunks": [
+        "Chunk 11"
+      ],
+      "retrieved_chunks": [
+        "Chunk 4",
+        "Chunk 10",
+        "Chunk 5",
+        "Chunk 18",
+        "Chunk 12",
+        "Chunk 16"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.47619047619047616,
+        "precision": 0.3125,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-13",
+      "question": "How does Stripe support recurring payments for authenticated bank debits like iDEAL?",
+      "golden_answer": "Stripe converts them into direct debits.",
+      "predicted_answer": "Stripe supports recurring payments for authenticated bank debits like iDEAL by converting these payment methods into direct debits. This allows customers to use them to pay for subscription services.",
+      "golden_chunks": [
+        "Chunk 12"
+      ],
+      "retrieved_chunks": [
+        "Chunk 17",
+        "Chunk 11",
+        "Chunk 12",
+        "Chunk 13",
+        "Chunk 16",
+        "Chunk 6"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "f1_score": 0.28571428571428575,
+        "precision": 0.1724137931034483,
+        "recall": 0.8333333333333334,
+        "token_recall": 0.8333333333333334
+      }
+    },
+    {
+      "question_id": "SPM-14",
+      "question": "What percentage of subscription invoices fail on the first charge attempt due to involuntary churn?",
+      "golden_answer": "0.09",
+      "predicted_answer": "9% of subscription invoices fail on the first charge attempt due to involuntary churn.",
+      "golden_chunks": [
+        "Chunk 12"
+      ],
+      "retrieved_chunks": [
+        "Chunk 11",
+        "Chunk 29",
+        "Chunk 12",
+        "Chunk 21",
+        "Chunk 16",
+        "Chunk 21"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "f1_score": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "token_recall": 0.0
+      }
+    },
+    {
+      "question_id": "SPM-15",
+      "question": "Why are bank credit transfers suitable for professional services where payments are large?",
+      "golden_answer": "Secure, non-disputable, customer-initiated, large payments.",
+      "predicted_answer": "Bank credit transfers are suitable for professional services where payments are large because they are a secure, non-disputable payment method that is often preferred for very large payments. They require customers to initiate the payment, which adds an extra level of authentication and security. Also, because contracts are typically in place before payment, it\u2019s more important that payments don\u2019t fail and can\u2019t be disputed rather than the business initiating the payment. Lastly, bank credit transfers are directly deposited into your account once the payment has been confirmed.",
+      "golden_chunks": [
+        "Chunk 14"
+      ],
+      "retrieved_chunks": [
+        "Chunk 13",
+        "Chunk 12",
+        "Chunk 1",
+        "Chunk 4",
+        "Chunk 7",
+        "Chunk 2"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.1020408163265306,
+        "precision": 0.054945054945054944,
+        "recall": 0.7142857142857143,
+        "token_recall": 0.7142857142857143
+      }
+    },
+    {
+      "question_id": "SPM-16",
+      "question": "What payment methods are supported by Stripe for SAAS and Subscription businesses with customers in Europe?",
+      "golden_answer": "Cartes Bancaires Bacs Direct Debit SEPA Direct Debit Bancontact iDEAL SOFORT",
+      "predicted_answer": "Stripe is designed to accept multiple payment methods. Authentic bank debits such as iDEAL, SOFORT, or Bancontact, which don't usually support recurring payments, are converted into direct debits by Stripe, enabling customers to use them to pay for subscription services. Recurring revenue businesses can use Stripe Billing for subscription logic, invoices, and allow customers to pay with bank debits or other preferred payment methods. Additionally, Stripe Checkout can handle European SCA requirements and trigger 3D Secure.",
+      "golden_chunks": [
+        "Chunk 15"
+      ],
+      "retrieved_chunks": [
+        "Chunk 15",
+        "Chunk 16",
+        "Chunk 17",
+        "Chunk 0",
+        "Chunk 18",
+        "Chunk 1"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.09090909090909091,
+        "precision": 0.05194805194805195,
+        "recall": 0.36363636363636365,
+        "token_recall": 0.36363636363636365
+      }
+    },
+    {
+      "question_id": "SPM-17",
+      "question": "Which payment methods are commonly used in China?",
+      "golden_answer": "Alipay, WeChat Pay, China UnionPay.",
+      "predicted_answer": "In China, 54% of online transactions involve digital wallets such as Alipay or WeChat Pay, and 20% occur with the local card network China Union Pay.",
+      "golden_chunks": [
+        "Chunk 3"
+      ],
+      "retrieved_chunks": [
+        "Chunk 2",
+        "Chunk 3",
+        "Chunk 6",
+        "Chunk 1",
+        "Chunk 21",
+        "Chunk 0"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.25806451612903225,
+        "precision": 0.15384615384615385,
+        "recall": 0.8,
+        "token_recall": 0.8
+      }
+    },
+    {
+      "question_id": "SPM-18",
+      "question": "What payment methods are relevant to customers in the Netherlands?",
+      "golden_answer": "iDEAL, Klarna, SEPA Direct Debit, SOFORT",
+      "predicted_answer": "The relevant payment methods for customers in the Netherlands are iDEAL, which is the most popular online payment method, and Klarna, which offers flexible payment options including installments, Pay Later, Pay Now, and Financing. Additionally, subsequent recurring payments can be completed via SEPA Direct Debit transactions.",
+      "golden_chunks": [
+        "Chunk 38",
+        "Chunk 52"
+      ],
+      "retrieved_chunks": [
+        "Chunk 38",
+        "Chunk 39",
+        "Chunk 2",
+        "Chunk 4",
+        "Chunk 18",
+        "Chunk 0"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.1923076923076923,
+        "precision": 0.10869565217391304,
+        "recall": 0.8333333333333334,
+        "token_recall": 0.8333333333333334
+      }
+    },
+    {
+      "question_id": "SPM-19",
+      "question": "What payment options are recommended for customers in Mexico?",
+      "golden_answer": "Pre-authorized debits (PADs) such as OXXO, cash-based payment methods",
+      "predicted_answer": "The popular payment methods for customers in Mexico include Cards, Digital Wallets, Bank Debits and Transfers, Cash-Based methods, and Other methods. Specifically, there is a cash-based payment method called OXXO which is largely used in Mexico.",
+      "golden_chunks": [
+        "Chunk 46",
+        "Chunk 9",
+        "Chunk 3"
+      ],
+      "retrieved_chunks": [
+        "Chunk 2",
+        "Chunk 45",
+        "Chunk 39",
+        "Chunk 0",
+        "Chunk 1",
+        "Chunk 3"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.16666666666666666,
+        "f1_score": 0.24489795918367344,
+        "precision": 0.15789473684210525,
+        "recall": 0.5454545454545454,
+        "token_recall": 0.5454545454545454
+      }
+    },
+    {
+      "question_id": "SPM-20",
+      "question": "Which payment methods are suitable for customers in the UK?",
+      "golden_answer": "Cards, Apple Pay, Bacs Direct Debit, Klarna",
+      "predicted_answer": "Cards, Digital Wallets, and Bank Debits and Transfers are among the payment methods suitable for customers in the UK.",
+      "golden_chunks": [
+        "Chunk 2",
+        "Chunk 26",
+        "Chunk 40"
+      ],
+      "retrieved_chunks": [
+        "Chunk 4",
+        "Chunk 2",
+        "Chunk 1",
+        "Chunk 0",
+        "Chunk 6",
+        "Chunk 42"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.07692307692307693,
+        "precision": 0.05263157894736842,
+        "recall": 0.14285714285714285,
+        "token_recall": 0.14285714285714285
+      }
+    },
+    {
+      "question_id": "SPM-21",
+      "question": "How long does it take for ACH credit transfer payments to be confirmed?",
+      "golden_answer": "2\u20133 business days",
+      "predicted_answer": "ACH credit transfer payments can take 2-3 business days to be confirmed.",
+      "golden_chunks": [
+        "Chunk 21"
+      ],
+      "retrieved_chunks": [
+        "Chunk 20",
+        "Chunk 21",
+        "Chunk 19",
+        "Chunk 52",
+        "Chunk 28",
+        "Chunk 5"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.47058823529411764,
+        "precision": 0.3076923076923077,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-22",
+      "question": "Can ACH debits be disputed?",
+      "golden_answer": "Yes.",
+      "predicted_answer": "Yes, ACH debits can be disputed by customers after the payment is initially completed.",
+      "golden_chunks": [
+        "Chunk 22"
+      ],
+      "retrieved_chunks": [
+        "Chunk 21",
+        "Chunk 20",
+        "Chunk 19",
+        "Chunk 46",
+        "Chunk 50",
+        "Chunk 49"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.13333333333333333,
+        "precision": 0.07142857142857142,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-23",
+      "question": "Does Alipay support disputes?",
+      "golden_answer": "No.",
+      "predicted_answer": "No",
+      "golden_chunks": [
+        "Chunk 24"
+      ],
+      "retrieved_chunks": [
+        "Chunk 22",
+        "Chunk 21",
+        "Chunk 16",
+        "Chunk 23",
+        "Chunk 17",
+        "Chunk 18"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-24",
+      "question": "Is Apple Pay more secure than cards?",
+      "golden_answer": "Yes, payment requires two-factor authentication as transactions have to be authorized via Face ID, Touch ID, or a passcode.",
+      "predicted_answer": "Yes, digital wallets like Apple Pay offer more security and convenience. Apple Pay transactions also result in fewer disputes compared to other payment methods due to their two-factor authentication.",
+      "golden_chunks": [
+        "Chunk 25"
+      ],
+      "retrieved_chunks": [
+        "Chunk 1",
+        "Chunk 23",
+        "Chunk 7",
+        "Chunk 31",
+        "Chunk 30",
+        "Chunk 24"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.28,
+        "precision": 0.23333333333333334,
+        "recall": 0.35,
+        "token_recall": 0.35
+      }
+    },
+    {
+      "question_id": "SPM-25",
+      "question": "Where is Bacs direct debit mainly used?",
+      "golden_answer": "UK",
+      "predicted_answer": "Bacs Direct Debit is mainly used in the United Kingdom.",
+      "golden_chunks": [
+        "Chunk 25",
+        "Chunk 26"
+      ],
+      "retrieved_chunks": [
+        "Chunk 25",
+        "Chunk 24",
+        "Chunk 26",
+        "Chunk 27",
+        "Chunk 49",
+        "Chunk 29"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "token_recall": 0.0
+      }
+    },
+    {
+      "question_id": "SPM-26",
+      "question": "What is the payment flow for customers using Bacs direct debit?",
+      "golden_answer": "Customer selects Bacs Direct Debit at checkout, provides their bank details and authorizes mandate. They will receive a notification of the upcoming payment.",
+      "predicted_answer": "The customer-facing flow for using Bacs Direct Debit is as follows: The customer selects Bacs Direct Debit as their payment method at checkout. They then provide their bank details and authorize the mandate. Finally, they receive a notification of the upcoming payment.",
+      "golden_chunks": [
+        "Chunk 27"
+      ],
+      "retrieved_chunks": [
+        "Chunk 24",
+        "Chunk 25",
+        "Chunk 29",
+        "Chunk 26",
+        "Chunk 27",
+        "Chunk 5"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.2,
+        "f1_score": 0.6060606060606061,
+        "precision": 0.46511627906976744,
+        "recall": 0.8695652173913043,
+        "token_recall": 0.8695652173913043
+      }
+    },
+    {
+      "question_id": "SPM-27",
+      "question": "Does Bancontact support recurring payments?",
+      "golden_answer": "Not directly, but recurring payments are supported by Stripe via SEPA Direct Debit.",
+      "predicted_answer": "Yes, Bancontact supports recurring payments.",
+      "golden_chunks": [
+        "Chunk 28"
+      ],
+      "retrieved_chunks": [
+        "Chunk 36",
+        "Chunk 11",
+        "Chunk 48",
+        "Chunk 26",
+        "Chunk 38",
+        "Chunk 12"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.2222222222222222,
+        "precision": 0.4,
+        "recall": 0.15384615384615385,
+        "token_recall": 0.15384615384615385
+      }
+    },
+    {
+      "question_id": "SPM-28",
+      "question": "How long does BACS Direct Debit payment confirmation take?",
+      "golden_answer": "3-4 Business days",
+      "predicted_answer": "BACS Direct Debit payment confirmation takes 3 business days.",
+      "golden_chunks": [
+        "Chunk 27"
+      ],
+      "retrieved_chunks": [
+        "Chunk 25",
+        "Chunk 29",
+        "Chunk 24",
+        "Chunk 26",
+        "Chunk 28",
+        "Chunk 27"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.16666666666666666,
+        "f1_score": 0.46153846153846156,
+        "precision": 0.3333333333333333,
+        "recall": 0.75,
+        "token_recall": 0.75
+      }
+    },
+    {
+      "question_id": "SPM-29",
+      "question": "Are card payments confirmed immediately?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes, card payments are confirmed immediately.",
+      "golden_chunks": [
+        "Chunk 31"
+      ],
+      "retrieved_chunks": [
+        "Chunk 29",
+        "Chunk 5",
+        "Chunk 9",
+        "Chunk 31",
+        "Chunk 30",
+        "Chunk 6"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.25,
+        "f1_score": 0.2857142857142857,
+        "precision": 0.16666666666666666,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-30",
+      "question": "What is the click to pay payment method?",
+      "golden_answer": "Click to Pay provides a unified checkout process supporting all participating network brands, including Visa, Mastercard, American Express, and Discover.",
+      "predicted_answer": "Click to Pay, based on the Secure Remote Commerce (SRC) specifications, is a digital wallet that supports all participating network brands, including Visa, Mastercard, American Express, and Discover. Customers can add cards from participating networks and enable click-to-pay simply and securely. To complete a transaction, customers select the Click to Pay checkout option. In some instances, they may be required to confirm their identity.",
+      "golden_chunks": [
+        "Chunk 32"
+      ],
+      "retrieved_chunks": [
+        "Chunk 42",
+        "Chunk 23",
+        "Chunk 31",
+        "Chunk 6",
+        "Chunk 36",
+        "Chunk 20"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.372093023255814,
+        "precision": 0.24242424242424243,
+        "recall": 0.8,
+        "token_recall": 0.8
+      }
+    },
+    {
+      "question_id": "SPM-31",
+      "question": "What does a customer have to do to pay by EPS?",
+      "golden_answer": "Select EPS at checkout \nComplete authorisation process (with scanner or SMS)\nGet redirected to EPS and choose bank\nGet notification that payment is complete\nEnter account credentials \nReturns back to business's site for payment confirmation",
+      "predicted_answer": "At checkout, customers choose EPS, select the name of their bank, and log into their online banking environment.",
+      "golden_chunks": [
+        "Chunk 34"
+      ],
+      "retrieved_chunks": [
+        "Chunk 32",
+        "Chunk 13",
+        "Chunk 16",
+        "Chunk 11",
+        "Chunk 12",
+        "Chunk 42"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.25925925925925924,
+        "precision": 0.3888888888888889,
+        "recall": 0.19444444444444445,
+        "token_recall": 0.19444444444444445
+      }
+    },
+    {
+      "question_id": "SPM-32",
+      "question": "Which payment methods don't allow refunds?",
+      "golden_answer": "OXXO",
+      "predicted_answer": "Authenticated bank debits, bank credit transfers, buy now pay later, and cash-based payment methods do not support refunds.",
+      "golden_chunks": [
+        "Chunk 47"
+      ],
+      "retrieved_chunks": [
+        "Chunk 30",
+        "Chunk 21",
+        "Chunk 22",
+        "Chunk 5",
+        "Chunk 6",
+        "Chunk 36"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "token_recall": 0.0
+      }
+    },
+    {
+      "question_id": "SPM-33",
+      "question": "What is the dispute policy for SEPA Direct Debit payments?",
+      "golden_answer": "Customers can dispute a transaction within eight weeks on a 'no questions asked' basis. Between eight weeks and 13 months, they can still dispute transactions based on unauthorized mandates through a bank arbitration process, after which disputes are no longer possible.",
+      "predicted_answer": "Customers are able to dispute a SEPA Direct Debit transaction within eight weeks on a \u201cno questions asked\u201d basis and funds will automatically be returned to them. Beyond that point and over the following eleven months, they are still able to dispute transactions that were not backed by an appropriately authorized mandate. During that period, the arbitration process involves both your bank and the customer\u2019s bank. After 13 months, disputes are no longer possible.",
+      "golden_chunks": [
+        "Chunk 51"
+      ],
+      "retrieved_chunks": [
+        "Chunk 50",
+        "Chunk 49",
+        "Chunk 48",
+        "Chunk 25",
+        "Chunk 24",
+        "Chunk 38"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.5,
+        "precision": 0.38666666666666666,
+        "recall": 0.7073170731707317,
+        "token_recall": 0.7073170731707317
+      }
+    },
+    {
+      "question_id": "SPM-34",
+      "question": "Can SOFORT payments be reversed by customers?",
+      "golden_answer": "No, only business-initiated refunds.",
+      "predicted_answer": "Once received, payments cannot be reversed except by business-initiated refunds.",
+      "golden_chunks": [
+        "Chunk 52",
+        "Chunk 53"
+      ],
+      "retrieved_chunks": [
+        "Chunk 51",
+        "Chunk 50",
+        "Chunk 29",
+        "Chunk 36",
+        "Chunk 46",
+        "Chunk 52"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.16666666666666666,
+        "f1_score": 0.37499999999999994,
+        "precision": 0.2727272727272727,
+        "recall": 0.6,
+        "token_recall": 0.6
+      }
+    },
+    {
+      "question_id": "SPM-35",
+      "question": "Is WeChatPay a bank debit payment method?",
+      "golden_answer": "No, it is a digital wallet",
+      "predicted_answer": "No, WeChatPay is not a bank debit payment method. It is a digital wallet.",
+      "golden_chunks": [
+        "Chunk 53"
+      ],
+      "retrieved_chunks": [
+        "Chunk 53",
+        "Chunk 6",
+        "Chunk 52",
+        "Chunk 48",
+        "Chunk 26",
+        "Chunk 50"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.6,
+        "precision": 0.42857142857142855,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-36",
+      "question": "How does Stripe Checkout decide which payment methods to show?",
+      "golden_answer": "IP, browser locale, cookies, signals.",
+      "predicted_answer": "Stripe Checkout decides which payment methods to show based on IP, browser locale, cookies, and other signals.",
+      "golden_chunks": [
+        "Chunk 17"
+      ],
+      "retrieved_chunks": [
+        "Chunk 18",
+        "Chunk 17",
+        "Chunk 15",
+        "Chunk 6",
+        "Chunk 16",
+        "Chunk 8"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.45454545454545453,
+        "precision": 0.29411764705882354,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-37",
+      "question": "Does Stripe Checkout support 3D Secure and SCA?",
+      "golden_answer": "Yes, dynamically",
+      "predicted_answer": "Yes, Stripe Checkout can trigger 3D Secure and handle European SCA requirements by dynamically applying card authentication when required by the cardholder\u2019s bank.",
+      "golden_chunks": [
+        "Chunk 17"
+      ],
+      "retrieved_chunks": [
+        "Chunk 16",
+        "Chunk 15",
+        "Chunk 17",
+        "Chunk 30",
+        "Chunk 27",
+        "Chunk 13"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "f1_score": 0.15384615384615385,
+        "precision": 0.08333333333333333,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-38",
+      "question": "How does Stripe help manage subscriptions and recurring billing?",
+      "golden_answer": "Stripe billing",
+      "predicted_answer": "Stripe helps manage subscriptions and recurring billing through several ways. Customers need to provide their card number or bank account details only once, which can then be used for recurring payments. Stripe converts authenticated bank debits such as iDEAL, SOFORT, or Bancontact into direct debits to facilitate recurring payments. Stripe Billing can assist in managing recurring declines for cards and supports many relevant payment methods for increasing recurring payment conversion. Stripe can also accommodate both recurring charges and invoicing, making it easier to manage subscriptions. Finally, Stripe allows users to send a hosted invoice with built-in support for cards and bank methods to minimize payment failure and automate payment tracking and reconciliation.",
+      "golden_chunks": [
+        "Chunk 17"
+      ],
+      "retrieved_chunks": [
+        "Chunk 11",
+        "Chunk 17",
+        "Chunk 12",
+        "Chunk 13",
+        "Chunk 15",
+        "Chunk 16"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "f1_score": 0.034782608695652174,
+        "precision": 0.017699115044247787,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-39",
+      "question": "What is Stripe Connect used for?",
+      "golden_answer": "Platforms and marketplaces can use Stripe Connect to accept money and pay out to third parties.",
+      "predicted_answer": "Stripe Connect is used by platforms and marketplaces to accept money and pay out to third parties. The sellers or service providers get the benefit of streamlined Stripe onboarding and instant access to select payment methods.",
+      "golden_chunks": [
+        "Chunk 17"
+      ],
+      "retrieved_chunks": [
+        "Chunk 17",
+        "Chunk 15",
+        "Chunk 16",
+        "Chunk 1",
+        "Chunk 13",
+        "Chunk 8"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.5384615384615385,
+        "precision": 0.3888888888888889,
+        "recall": 0.875,
+        "token_recall": 0.875
+      }
+    },
+    {
+      "question_id": "SPM-40",
+      "question": "Can Stripe enable international payment methods without a local bank account?",
+      "golden_answer": "Yes, for certain methods",
+      "predicted_answer": "Yes, Stripe allows you to enable certain international payment methods without having to set up a local bank account.",
+      "golden_chunks": [
+        "Chunk 18"
+      ],
+      "retrieved_chunks": [
+        "Chunk 17",
+        "Chunk 15",
+        "Chunk 16",
+        "Chunk 0",
+        "Chunk 14",
+        "Chunk 13"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "f1_score": 0.2608695652173913,
+        "precision": 0.15789473684210525,
+        "recall": 0.75,
+        "token_recall": 0.75
+      }
+    },
+    {
+      "question_id": "SPM-41",
+      "question": "How does Stripe handle currency conversion fees?",
+      "golden_answer": "I don't know",
+      "predicted_answer": "The context does not provide information on how Stripe handles currency conversion fees.",
+      "golden_chunks": [],
+      "retrieved_chunks": [
+        "Chunk 17",
+        "Chunk 13",
+        "Chunk 14",
+        "Chunk 15",
+        "Chunk 1",
+        "Chunk 11"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "token_recall": 0.0
+      }
+    },
+    {
+      "question_id": "SPM-42",
+      "question": "Are there automatic retries when a customers card is declined?",
+      "golden_answer": "I don't know",
+      "predicted_answer": "I don't know.",
+      "golden_chunks": [],
+      "retrieved_chunks": [
+        "Chunk 30",
+        "Chunk 29",
+        "Chunk 11",
+        "Chunk 9",
+        "Chunk 16",
+        "Chunk 5"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-43",
+      "question": "Does Stripe support GrabPay for customers in Singapore, Thailand, or the Philippines?",
+      "golden_answer": "I don't know",
+      "predicted_answer": "I don't know.",
+      "golden_chunks": [],
+      "retrieved_chunks": [
+        "Chunk 15",
+        "Chunk 16",
+        "Chunk 1",
+        "Chunk 17",
+        "Chunk 22",
+        "Chunk 0"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "token_recall": 1.0
+      }
+    },
+    {
+      "question_id": "SPM-44",
+      "question": "What is the maximum transaction amount Stripe allows?",
+      "golden_answer": "I don't know",
+      "predicted_answer": "The context does not provide information on the maximum transaction amount Stripe allows.",
+      "golden_chunks": [],
+      "retrieved_chunks": [
+        "Chunk 15",
+        "Chunk 17",
+        "Chunk 18",
+        "Chunk 8",
+        "Chunk 1",
+        "Chunk 13"
+      ],
+      "source_document": "stripe_payment_methods_33p.pdf",
+      "metrics": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "f1_score": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "token_recall": 0.0
+      }
+    }
+  ]
+}

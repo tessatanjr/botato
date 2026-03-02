@@ -446,7 +446,7 @@
     },
     {
         "id": "SFAQ-36",
-        "question": "",
+        "question": "How much does Stripe charge per transaction?",
         "golden_answer": "I don't know",
         "openai_relevant_chunk": [
         ],
@@ -456,7 +456,7 @@
     },
     {
         "id": "SFAQ-37",
-        "question": "",
+        "question": "Can I use Stripe if I'm an individual/freelancer rather than a registered business?",
         "golden_answer": "I don't know",
         "openai_relevant_chunk": [
         ],
@@ -466,7 +466,7 @@
     },
     {
         "id": "SFAQ-38",
-        "question": "",
+        "question": "Does Stripe offer volume discounts for high-transaction businesses?",
         "golden_answer": "I don't know",
         "openai_relevant_chunk": [
         ],
@@ -476,17 +476,7 @@
     },
     {
         "id": "SFAQ-39",
-        "question": "",
-        "golden_answer": "I don't know",
-        "openai_relevant_chunk": [
-        ],
-        "minilm_relevant_chunk": [
-        ],
-        "source_document": "stripe_faq_24p.pdf"
-    },
-    {
-        "id": "SFAQ-40",
-        "question": "",
+        "question": "Does Stripe support cryptocurrency payments?",
         "golden_answer": "I don't know",
         "openai_relevant_chunk": [
         ],

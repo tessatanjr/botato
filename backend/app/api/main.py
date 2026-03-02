@@ -75,13 +75,16 @@ def chat(req: ChatRequest, db: Session = Depends(get_db)):
     retrieved_chunk_info = [
         {
             "index": r["chunk_index"],
-            "source": r["source"]
+            "source": r["source"],
+            "text": r["text"]
         }
         for r in retrieved
     ]
 
-    if req.llm_model.lower().startswith("gpt"):
+    if req.llm_model.lower().startswith("gpt-4"):
         llm = GPTModel(model="gpt-4")
+    elif req.llm_model.lower().startswith("gpt-5"):
+        llm = GPTModel(model="gpt-5")
     elif req.llm_model.lower().startswith("llama3"):
         llm = Llama3Model(model="llama3:latest")
     else:

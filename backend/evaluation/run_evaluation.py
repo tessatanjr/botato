@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Simple RAG Evaluation Runner
-Usage: 
 python run_evaluation.py --provider minilm --model llama3:latest --top-k 6
 python run_evaluation.py --provider openai --model llama3:latest --top-k 6
 python run_evaluation.py --provider minilm --model gpt-4 --top-k 6
 python run_evaluation.py --provider openai --model gpt-4 --top-k 6
+python run_evaluation.py --provider minilm --model gpt-5 --top-k 6
+python run_evaluation.py --provider openai --model gpt-5 --top-k 6
 """
 
 import argparse
@@ -19,7 +19,7 @@ def main():
                         choices=['minilm', 'openai'],
                         help='Embedding provider (minilm or openai)')
     parser.add_argument('--model', type=str, default='gpt-4',
-                        help='LLM model to use (e.g., gpt-4, llama3:latest')
+                        help='LLM model to use (e.g., gpt-4, gpt-5, llama3:latest')
     parser.add_argument('--top-k', type=int, default=5,
                         help='Number of chunks to retrieve')
     parser.add_argument('--output', type=str, default=None,
