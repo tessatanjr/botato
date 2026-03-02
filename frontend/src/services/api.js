@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-const client = axios.create({ baseURL: '/api' })
+const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
+const client = axios.create({ baseURL: BASE_URL })
 
 export const ingestFile = async (fileOrUrl, embeddingProvider) => {
   const form = new FormData()
