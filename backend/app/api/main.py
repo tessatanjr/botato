@@ -1,6 +1,6 @@
 from fastapi import Depends, FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from db.session import SessionLocal
+from db.session import SessionLocal, engine
 from sqlalchemy.orm import Session
 from db.model import ChatMessage, ChatSession, Document, DocumentChunk
 import glob
@@ -14,8 +14,14 @@ from app.llm.gpt import GPTModel
 from app.llm.llama3 import Llama3Model
 import shutil, os
 import re
+from db.base import Base
 
 app = FastAPI()
+
+@app.on_event("startup")
+def create_tables():
+    Base.metadata.create_all(bind=engine)
+    print("Database ready.")
 
 app.add_middleware(
     CORSMiddleware,
