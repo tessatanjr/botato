@@ -1,6 +1,8 @@
 FROM node:18-alpine AS build
 ARG VITE_API_URL
+ARG VITE_ENV
 ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_ENV=$VITE_ENV
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
