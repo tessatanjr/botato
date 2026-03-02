@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI, UploadFile, File, Form, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from db.session import SessionLocal
 from sqlalchemy.orm import Session
 from db.model import ChatMessage, ChatSession, Document, DocumentChunk
@@ -15,6 +16,14 @@ import shutil, os
 import re
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Or ["*"] for testing
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), "..", "docs")
 # os.makedirs(UPLOAD_FOLDER, exist_ok=True)
