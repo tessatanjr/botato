@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = import.meta.env.VITE_API_URL || '/api';
-
+const BASE_URL = (import.meta.env.VITE_API_URL || '') + '/api'
 const client = axios.create({ baseURL: BASE_URL })
 
 export const ingestFile = async (fileOrUrl, embeddingProvider) => {
@@ -14,7 +13,7 @@ export const ingestFile = async (fileOrUrl, embeddingProvider) => {
     form.append('file', fileOrUrl)
   }
 
-  const res = await axios.post('/api/upload', form)
+  const res = await client.post('/upload', form)
 
   return res.data
 }
