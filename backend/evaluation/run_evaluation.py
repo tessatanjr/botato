@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 python run_evaluation.py --provider minilm --model llama3:latest --top-k 6
 python run_evaluation.py --provider openai --model llama3:latest --top-k 6
