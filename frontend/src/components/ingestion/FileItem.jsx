@@ -25,11 +25,9 @@ export default function FileItem({ name, status, indexer, isUrl }) {
   }
 
   const ext = isUrl ? 'URL' : name.split('.').pop().toUpperCase()
-  const icon = isUrl ? '🔗' : '📕'
 
   return (
     <div className="flex items-center gap-3 p-3 rounded-lg bg-zinc-900 border border-zinc-800">
-      <span className="text-lg">{icon}</span>
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-zinc-200 truncate">{name}</p>
         <p className="text-xs text-zinc-500 font-mono">{ext}</p>

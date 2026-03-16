@@ -11,6 +11,7 @@ pytest
 python-docx
 python-dotenv
 python-multipart
+rank-bm25
 requests
 sentence-transformers
 spacy

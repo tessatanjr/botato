@@ -13,6 +13,8 @@ from openai import OpenAI
 import os
 import pickle
 from sentence_transformers import SentenceTransformer
+from rank_bm25 import BM25Okapi
+
 
 load_dotenv()
 
@@ -37,8 +39,12 @@ class RetrievalEngine:
         logger.info(f"Loaded FAISS index from {index_path}")
 
         with open(meta_path, "rb") as f:
-            self.metadata_store = pickle.load(f)
-        logger.info(f"Loaded metadata store from {meta_path}")
+          saved = pickle.load(f)
+    
+        self.metadata_store = saved["metadata_store"]
+        self.bm25 = BM25Okapi(saved["bm25_corpus"])
+        logger.info(f"Loaded metadata store and BM25 index")
+        logger.info("Retrieval engine initialized.")
 
 
         logger.info("Retrieval engine initialized.")
@@ -70,9 +76,23 @@ class RetrievalEngine:
 
         D, I = self.index.search(query_vector, k)
 
+        faiss_ranks = I[0].tolist()
+
+        tokenized_query = query.lower().split()
+        bm25_scores = self.bm25.get_scores(tokenized_query)
+        bm25_ranks = np.argsort(bm25_scores)[::-1][:k].tolist()
+        
+        fused_scores = {}
+        for rank, idx in enumerate(faiss_ranks):
+            fused_scores[idx] = fused_scores.get(idx, 0) + 1 / (60 + rank)
+        for rank, idx in enumerate(bm25_ranks):
+            fused_scores[idx] = fused_scores.get(idx, 0) + 1 / (60 + rank)
+
+        top_indices = sorted(fused_scores, key=fused_scores.get, reverse=True)[:k]
+
         results = []
         
-        for idx in I[0]:
+        for idx in top_indices:
             metadata = self.metadata_store[idx]
             results.append({
                 "chunk_index": "Chunk " + str(metadata.get("chunk_id", idx)),

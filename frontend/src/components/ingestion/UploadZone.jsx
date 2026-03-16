@@ -74,7 +74,6 @@ export default function UploadZone() {
             e.target.value = ''
           }}
         />
-        <p className="text-3xl mb-2">📄</p>
         <p className="text-sm font-semibold text-zinc-300">Drop files here</p>
         <p className="text-xs text-zinc-500 mt-1">PDF or Word documents</p>
       </div>
@@ -110,7 +109,7 @@ export default function UploadZone() {
           className="w-full py-3 rounded-lg bg-emerald-500 text-zinc-950 font-semibold text-sm
             hover:bg-emerald-400 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
         >
-          {indexing ? '⏳ Indexing…' : '⚡ Index Documents'}
+          {indexing ? 'Indexing…' : 'Index Documents'}
         </button>
 
         {/* Divider */}
@@ -127,7 +126,7 @@ export default function UploadZone() {
           className="w-full py-2.5 rounded-lg bg-zinc-800 text-zinc-300 font-medium text-sm border border-zinc-700
             hover:bg-zinc-700 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
         >
-          {resetting ? '⏳ Resetting…' : '💬 Clear Chat History'}
+          {resetting ? 'Resetting Chat History…' : 'Clear Chat History'}
         </button>
 
         {/* Reset everything */}
@@ -137,7 +136,9 @@ export default function UploadZone() {
           className="w-full py-2.5 rounded-lg bg-zinc-800 text-red-400 font-medium text-sm border border-zinc-700
             hover:bg-red-950 hover:border-red-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
         >
-          {resetting ? '⏳ Resetting…' : '🗑 Clear Everything'}
+          {resetting
+            ? 'Resetting chat history and document upload history'
+            : 'Clear Everything'}
         </button>
       </div>
     </div>
